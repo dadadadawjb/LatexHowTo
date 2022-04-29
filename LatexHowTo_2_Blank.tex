@@ -1,0 +1,76 @@
+\section{Blank}
+\subsection{Blank After Command}
+Happy \TeX ing. Happy \TeX\ ing. Happy \TeX{} ing. Happy {\TeX} ing.
+
+\subsection{Blank With Newline}
+Ties (带子): \newline
+Question~1      \newline    % numbering
+Donald~E. Knuth \newline    % christian name, but last name can newline
+Mr.~Wang        \newline    % appellation
+function~$f(x)$ \newline    % short formula after the name
+1,~2, and~3                 % within serial
+
+Other cannot newline blank: \newline
+[\thinspace] or [\,]: 0.1667em  \newline    % can be used for seperating long number instead of comma, also seperating number and unit
+[\negthinspace]: -0.1667em      \newline    % can be used for concatenating two symbols
+[\enspace]: 0.5em               \newline
+[\nobreakspace] or [~]: 1 blank
+
+Other can newline blank:    \newline
+[\quad]: 1em                                        \newline    % can be used for seperating word group
+[\qquad]: 2em                                       \newline    % can be used for seperating word group
+[\enskip]: 0.5em                                    \newline
+[\ ]: 1 blank                                       \newline
+[\hspace{1cm plus 0.5cm minus 0.25cm}]              \newline    % rubber length
+\hspace*{1cm}compulsion                             \newline    % if no `*`, by default will omit the line start space
+left\hspace{\fill}middle\hspace{\fill}right         \newline    % can be used for uniform arranging
+left\hfill middle\hfill right                       \newline    % the same as \hspace{\fill}
+left\hspace{\stretch{2}}$2/3$\hspace{\fill}right    \newline
+left\hrulefill middle\dotfill right
+
+\subsection{Blank After Dot}
+Hello, world. Hi. (Dot after lowercase by default end)
+
+U.S.A. is abbreviation. (Dot after uppercase by default abbreviation)
+
+Lu et al.\ is great. (lowercase abbreviation)
+
+Roman number XII\@. Yes. (uppercase end)
+
+\subsection{Blank With Languages}
+中文与English之间会被自动加上空格
+
+\mbox{取消中英文间隔}Hello
+
+\subsection{Phantom}
+Phantom (幻影): \newline
+Hello \phantom{world}, dadadadawjb!     \newline    % by default horizon
+Hello \hphantom{world}, dadadadawjb!    \newline    % horizon
+Hello \vphantom{world}, dadadadawjb!                % vertical
+
+\subsection{Newline}
+This is a line. \par
+This is a line. \\[2cm]{}
+This is a line. \linebreak[0]
+This is a line. \newline
+This is a line.
+
+\subsection{Vertical Blank}
+[\vspace{1cm plus 0.5cm minus 0.25cm}]              \newline    % rubber length
+[\smallskip]                                        \newline    % small skip
+[\medskip]                                          \newline    % middle skip
+[\bigskip]                                          \newline    % big skip
+\vspace*{1cm}compulsion                             \newline    % if no `*`, by default will omit the line start space
+
+\subsection{Newpage}
+This is in one page. \enlargethispage*{1cm}     % for extra small content and preventing newpage, if `no`, then will also reduce line spacing
+
+\pagebreak[0]
+This is maybe also in this page.
+% \nopagebreak[0]
+
+\newpage
+This is in the other page.
+
+% \clearpage
+% \cleardoublepage

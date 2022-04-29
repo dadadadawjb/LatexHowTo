@@ -1,0 +1,220 @@
+{
+    //------------------------------LaTeX configuration------------------------
+    // auto build
+    "latex-workshop.latex.autoBuild.run": "never",
+    // right click menu
+    "latex-workshop.showContextMenu": true,
+    // auto complete command and environment
+    "latex-workshop.intellisense.package.enabled": true,
+    // error and warning show
+    "latex-workshop.message.error.show": false,
+    "latex-workshop.message.warning.show": false,
+    // build tools and commands
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "makeindex",
+            "command": "makeindex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "makeglossaries",
+            "command": "makeglossaries",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    // build recipe/chain configuration
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "XeLaTeX",
+            "tools": [
+                "xelatex"
+            ]
+        },
+        {
+            "name": "PDFLaTeX",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "BibTeX",
+            "tools": [
+                "bibtex"
+            ]
+        },
+        {
+            "name": "MakeIndex",
+            "tools": [
+                "makeindex"
+            ]
+        },
+        {
+            "name": "MakeGlossaries",
+            "tools": [
+                "makeglossaries"
+            ]
+        },
+        {
+            "name": "LaTeXmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "XeLaTex -> BibTex -> XeLaTex*2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "PDFLaTex -> BibTex -> PDFLaTex*2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "XeLaTex -> MakeIndex -> XeLaTex",
+            "tools": [
+                "xelatex",
+                "makeindex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "PDFLaTex -> MakeIndex -> PDFLaTex",
+            "tools": [
+                "pdflatex",
+                "makeindex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "XeLaTex -> MakeGlossaries -> XeLaTex",
+            "tools": [
+                "xelatex",
+                "makeglossaries",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "PDFLaTex -> MakeGlossaries -> PDFLaTex",
+            "tools": [
+                "pdflatex",
+                "makeglossaries",
+                "pdflatex"
+            ]
+        }
+    ],
+    // files clean
+    "latex-workshop.latex.clean.fileTypes": [
+    //    "*.aux", // for cross reference
+    //    "*.bbl", // for literature reference
+    //    "*.bst", // for literature reference style
+    //    "*.blg", // for literature reference log
+    //    "*.idx", // for index
+    //    "*.ind", // for index
+    //    "*.ist", // for index style
+    //    "*.ilg", // for index log
+    //    "*.glo", // for glossary
+    //    "*.gls", // for glossary
+    //    "*.glg", // for glossary log
+    //    "*.glo2", // for glossary
+    //    "*.gls2", // for glossary
+    //    "*.glg2", // for glossary log
+    //    "*.glsdefs, // for glossary something
+    //    "*.lof", // for list of figure
+    //    "*.lot", // for list of table
+    //    "*.toc", // for table of contents
+    //    "*.out", // for hyperref
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk",
+        "*.cpt",
+        "*.synctex.gz"
+    ],
+    // auto clean
+    "latex-workshop.latex.autoClean.run": "onFailed",
+    // build recipe/chain
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    // synctex
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+
+    // pdf viewer
+    "latex-workshop.view.pdf.viewer": "external",
+    // \ref View on PDF
+    "latex-workshop.view.pdf.ref.viewer":"auto",
+    // external pdf viewer command
+    "latex-workshop.view.pdf.external.viewer.command": "D:/SumatraPDF/SumatraPDF/SumatraPDF.exe", // path edit notice
+    // latex-workshop.view.pdf.external.view.command argument
+    "latex-workshop.view.pdf.external.viewer.args": [
+        "%PDF%"
+    ],
+    // synctex for external pdf viewer command
+    "latex-workshop.view.pdf.external.synctex.command": "F:/SumatraPDF/SumatraPDF.exe", // path edit notice
+    // latex-workshop.view.pdf.external.synctex argument
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "-forward-search",
+        "%TEX%",
+        "%LINE%",
+        "-reuse-instance",
+        "-inverse-search",
+        "\"D:/VisualStudioCode/VSCode/Microsoft VS Code/Code.exe\" \"D:/VisualStudioCode/VSCode/Microsoft VS Code/resources/app/out/cli.js\" -r -g \"%f:%l\"", // path edit notice
+        "%PDF%"
+    ],
+    "material-icon-theme.activeIconPack": "angular_ngrx",
+    "remote.SSH.remotePlatform": {
+        "networking-lab-vm": "linux"
+    }
+}

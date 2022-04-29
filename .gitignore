@@ -1,0 +1,21 @@
+# auxiliary files
+*.aux
+*.idx
+*.ilg
+*.ind
+*.bbl
+*.blg
+*.glg2
+*.glo
+*.glo2
+*.gls2
+*.glsdefs
+*.ist
+*.lof
+*.lot
+*.out
+*.thm
+*.toc
+# self-defined generated auxiliary files
+# *.lomyfloat
+# *.lomynewfloat

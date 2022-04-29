@@ -1,0 +1,607 @@
+\section{Tabular}
+\subsection{Tabbing}
+\begin{tabbing}
+    Form\hspace{3em}    \= Author \\
+    Plain \TeX          \> Donald Ervin Knuth \\
+    \LaTeX              \> Leslie Lamport
+\end{tabbing}
+
+\subsection{Tabular And Array}
+\subsubsection{Overview}
+\begin{tabular}[b]{l|cr|p{8em}}    % optional b for bottom, t for rop, no by default center
+    left & center & right & fixed width \\
+    \hline
+    raggedright & centering & raggedleft & \centering This can automatically line break if it is longer than the fixed width \\
+\end{tabular}
+Ragged bottom.
+
+Almost the same as tabular, not repeat.
+\[
+    \begin{array}{l|cr}
+        \frac{1}{2} & 1 & 0 \\
+        \hline
+        0 & 1 & -\frac{1}{2} \\
+    \end{array}
+\]
+
+\begin{tabular}{|c|*{3}{r@{.}l|}}
+    \hline
+    input & 12345&6 & 5000&0 & 1020&55 \\ \hline
+    output & 765&43 & 5120&5 & 98760&0 \\ \hline
+    net & 11580&17 & -120&5 & -97739&45 \\ \hline
+\end{tabular}
+
+\begin{tabular}{|c|*{3}{d|}}    % must usepackage dcolumn
+    \hline
+    name & \multicolumn{1}{c|}{wjb} & \multicolumn{1}{c|}{dadadadawjb} & \multicolumn{1}{c|}{Wang Junbo} \\ \hline
+    input & 12345.6 & 5000 & 1020.55 \\ \hline
+    output & 765.43 & 5120.5 & 98760 \\ \hline
+    net & 11580.17 & -120.5 & -97739.45 \\ \hline
+\end{tabular}
+
+The left 
+\begin{tabular}{@{}c}
+    Hello \\
+    World
+\end{tabular}
+The right
+
+\begin{tabular}{|c|@{\extracolsep{1em}}c|c|c|}
+    \hline
+    1 & 2 & 3 & 4 \\
+    \hline
+\end{tabular}
+
+\begin{tabular}[t]{|c|}
+    \hline
+    up \\ mid \\ down \\
+    \hline
+\end{tabular}
+Ragged top
+\begin{tabular}[t]{|c|}     % must usepackage array
+    \firsthline
+    up \\ mid \\ down \\
+    \lasthline
+\end{tabular}
+Ragged top
+
+\subsubsection{Item Merge And Split}
+Used for the horizontal merge:
+\begin{tabular}{|r|r|}
+    \hline
+    \multicolumn{2}{|c|}{grades} \\ \hline
+    OS & CA \\ \hline
+    95 & 100 \\ \hline
+\end{tabular}
+
+Used for changing the ragging:
+\begin{tabular}{|r|r|}
+    \hline
+    \multicolumn{1}{|c|}{input} & \multicolumn{1}{c|}{output} \\ \hline
+    1 & 1 \\ \hline
+    2 & 4 \\ \hline
+    3 & 9 \\ \hline
+\end{tabular}
+
+Used for the vertical merge:
+\begin{tabular}{|c|r|r|}
+    \hline
+      & \multicolumn{2}{c|}{grades} \\ \cline{2-3}
+    name & OS & CA \\ \hline
+    wjb & 95 & 100 \\ \hline
+\end{tabular}
+\begin{tabular}{|c|r|r|}    % must usepackage multirow
+    \hline
+    \multirow{2}*{name}  & \multicolumn{2}{c|}{grades} \\ \cline{2-3}
+      & OS & CA \\ \hline
+    wjb & 95 & 100 \\ \hline
+\end{tabular}
+
+Used for the horizontal split:
+\begin{tabular}{|c|}
+    \hline
+    1 \\ \hline
+    1 \vline\ 2 \\ \hline
+    1 \vline\ 2 \vline\ 3 \\ \hline
+\end{tabular}
+\begin{tabular}{|c|}
+    \hline
+    1 \\ \hline
+    \begin{tabular}{@{}c|c@{}} 1 & 2 \end{tabular} \\ \hline
+    \begin{tabular}{@{}c|c|c@{}} 1 & 2 & 3 \end{tabular} \\ \hline
+\end{tabular}
+
+Make item cell:
+% must usepackage makecell
+\begin{tabular}{|r|r|}
+    \hline
+    \makecell[c]{input\\data} & \makecell[c]{output\\data} \\ \hline
+    12345 & 56789 \\ \hline
+\end{tabular}
+\begin{tabular}{|r|r|}
+    \hline
+    \thead[c]{input\\data} & \thead[c]{output\\data} \\ \hline
+    12345 & 56789 \\ \hline
+\end{tabular}
+\settowidth\rotheadsize{\theadfont Mathematica}     % set the width of the head rotated
+\begin{tabular}{|c|c|}
+    \hline
+    \thead[c]{name} & \rothead{math\\grade} \\ \hline
+    wjb & 100 \\ \hline
+\end{tabular}
+\begin{tabular}{|c|r|}
+    % must usepackage multirow and makecell
+    \hline
+    \multirowcell{3}{multiple\\grades} & 100 \\ \cline{2-2}
+      & 99 \\ \cline{2-2}
+      & 98 \\ \hline
+\end{tabular}
+
+Diagnal split:
+% must usepackage diagbox
+\begin{tabular}{|c|ccc|}
+    \hline
+    \diagbox{row}{value}{column} & c1 & c2 & c3 \\ \hline
+    r1 & 1 & 0 & 0 \\
+    r2 & 0 & 1 & 0 \\
+    r3 & 0 & 0 & 1 \\ \hline
+\end{tabular}
+
+\subsubsection{Width}
+\begin{tabular*}{\textwidth}{|c@{\extracolsep{\fill}}ccccc|}
+    \hline
+    number & 1 & 2 & 3 & 4 & 5 \\
+    character & A & B & C & D & E \\
+    \hline
+\end{tabular*}
+
+\begin{tabularx}{\textwidth}{|c|X|X|X|X|X|}     % must usepackage tabularx
+    \hline
+    number & 1 & 2 & 3 & 4 & 5 \\ \hline
+    character & A & B & C & D & E \\ \hline
+\end{tabularx}      % by default ragged right
+
+\begin{tabularx}{\textwidth}{|c|Y|Y|Y|Y|Y|}
+    \hline
+    number & 1 & 2 & 3 & 4 & 5 \\ \hline
+    character & A & B & C & D & E \\ \hline
+\end{tabularx}
+
+We can not deal with the too wide tabular.
+
+\subsubsection{Length}
+\begin{longtable}[c]{|c|c|}         % must usepackage longtable
+    \caption{The Example Of Longtable} \\
+    \hline
+    \endfirsthead
+
+    \multicolumn{2}{l}{ (Continued) } \\
+    \hline
+    \endhead
+
+    \multicolumn{2}{c}{Continuing next page\ldots} \\[2ex]
+    \endfoot
+
+    \hline
+    \multicolumn{2}{r}{End Of Table} \\
+    \endlastfoot
+
+    name & description \\ \hline
+    a & the fist character in alphabet \\
+    b & the second character in alphabet \\
+    c & the third character in alphabet \\
+    d & the fourth character in alphabet \\
+    e & the fifth character in alphabet \\
+    f & the sixth character in alphabet \\
+    g & the seventh character in alphabet \\
+    h & the eighth character in alphabet \\
+    i & the ninth character in alphabet \\
+    j & the tenth character in alphabet \\
+    k & the eleventh character in alphabet \\
+    l & the twelfth character in alphabet \\
+    m & the thirdth character in alphabet \\
+    n & the fourteenth character in alphabet \\
+    o & the fifteenth character in alphabet \\
+    p & the sixteenth character in alphabet \\
+    q & the seventeenth character in alphabet \\
+    r & the eighteenth character in alphabet \\
+    s & the nineteenth character in alphabet \\
+    t & the twentieth character in alphabet \\
+    u & the twenty first character in alphabet \\
+    v & the twenty second character in alphabet \\
+    w & the twenty third character in alphabet \\
+    x & the twenty fourth character in alphabet \\
+    y & the twenty fifth character in alphabet \\
+    z & the twenty sixth character in alphabet \\
+\end{longtable}
+
+\LTXtable{\textwidth}{LTXTable.tex}     % must usepackage ltxtable
+
+\begin{VerbatimOut}{LTXTable.vrb}
+    \begin{longtable}{|X|X|}
+        \caption{The Example Of LTXTable With Fancyvrb} \\
+        \hline
+        \endfirsthead
+    
+        \multicolumn{2}{l}{ (Continued) } \\
+        \hline
+        \endhead
+    
+        \multicolumn{2}{c}{Continuing next page\ldots} \\[2ex]
+        \endfoot
+    
+        \hline
+        \multicolumn{2}{r}{End Of Table} \\
+        \endlastfoot
+    
+        Name & Description \\ \hline
+        A & The 1st character in alphabet \\
+        B & The 2nd character in alphabet \\
+        C & The 3rd character in alphabet \\
+        D & The 4th character in alphabet \\
+        E & The 5th character in alphabet \\
+        F & The 6th character in alphabet \\
+        G & The 7th character in alphabet \\
+        H & The 8th character in alphabet \\
+        I & The 9th character in alphabet \\
+        J & The 10th character in alphabet \\
+        K & The 11th character in alphabet \\
+        L & The 12th character in alphabet \\
+        M & The 13th character in alphabet \\
+        N & The 14th character in alphabet \\
+        O & The 15th character in alphabet \\
+        P & The 16th character in alphabet \\
+        Q & The 17th character in alphabet \\
+        R & The 18th character in alphabet \\
+        S & The 19th character in alphabet \\
+        T & The 20th character in alphabet \\
+        U & The 21st character in alphabet \\
+        V & The 22nd character in alphabet \\
+        W & The 23rd character in alphabet \\
+        X & The 24th character in alphabet \\
+        Y & The 25th character in alphabet \\
+        Z & The 26th character in alphabet \\
+    \end{longtable}
+\end{VerbatimOut}
+\LTXtable{\textwidth}{LTXTable.vrb}         % must usepackage ltxtable and fancyvrb
+
+\begin{longtabu} to \textwidth {|X|X|}      % must usepackage tabu and longtable
+    \caption{The Example Of Longtabu} \\
+    \hline
+    \endfirsthead
+
+    \multicolumn{2}{l}{ (Continued) } \\
+    \hline
+    \endhead
+
+    \multicolumn{2}{c}{Continuing next page\ldots} \\[2ex]
+    \endfoot
+
+    \hline
+    \multicolumn{2}{r}{End Of Table} \\
+    \endlastfoot
+
+    Name & Description \\ \hline
+    a & The 1st character in alphabet \\
+    b & The 2nd character in alphabet \\
+    c & The 3rd character in alphabet \\
+    d & The 4th character in alphabet \\
+    e & The 5th character in alphabet \\
+    f & The 6th character in alphabet \\
+    g & The 7th character in alphabet \\
+    h & The 8th character in alphabet \\
+    i & The 9th character in alphabet \\
+    j & The 10th character in alphabet \\
+    k & The 11th character in alphabet \\
+    l & The 12th character in alphabet \\
+    m & The 13th character in alphabet \\
+    n & The 14th character in alphabet \\
+    o & The 15th character in alphabet \\
+    p & The 16th character in alphabet \\
+    q & The 17th character in alphabet \\
+    r & The 18th character in alphabet \\
+    s & The 19th character in alphabet \\
+    t & The 20th character in alphabet \\
+    u & The 21st character in alphabet \\
+    v & The 22nd character in alphabet \\
+    w & The 23rd character in alphabet \\
+    x & The 24th character in alphabet \\
+    y & The 25th character in alphabet \\
+    z & The 26th character in alphabet \\
+\end{longtabu}
+
+\begin{center}
+    \tablecaption{The Example Of Xtab}
+    \tablefirsthead{\hline}
+    \tablehead{\multicolumn{2}{l}{ (Continued) } \\ \hline}
+    \tabletail{\multicolumn{2}{c}{Continuing next page\ldots} \\[2ex]}
+    \tablelasttail{\hline \multicolumn{2}{r}{End Of Table} \\}
+    \begin{xtabular}{|c|c|}     % must usepackage xtab, if `*` then fix width like tabular*
+        name & description \\ \hline
+        a & The 1st character in alphabet \\
+        b & The 2nd character in alphabet \\
+        c & The 3rd character in alphabet \\
+        d & The 4th character in alphabet \\
+        e & The 5th character in alphabet \\
+        f & The 6th character in alphabet \\
+        g & The 7th character in alphabet \\
+        h & The 8th character in alphabet \\
+        i & The 9th character in alphabet \\
+        j & The 10th character in alphabet \\
+        k & The 11th character in alphabet \\
+        l & The 12th character in alphabet \\
+        m & The 13th character in alphabet \\
+        n & The 14th character in alphabet \\
+        o & The 15th character in alphabet \\
+        p & The 16th character in alphabet \\
+        q & The 17th character in alphabet \\
+        r & The 18th character in alphabet \\
+        s & The 19th character in alphabet \\
+        t & The 20th character in alphabet \\
+        u & The 21st character in alphabet \\
+        v & The 22nd character in alphabet \\
+        w & The 23rd character in alphabet \\
+        x & The 24th character in alphabet \\
+        y & The 25th character in alphabet \\
+        z & The 26th character in alphabet \\
+    \end{xtabular}
+\end{center}
+
+\subsubsection{Thickness}
+\begin{tabular}{*{6}{c}}    % must usepackage booktabs
+    \toprule
+    \multirow{2}*{Name} & \multicolumn{2}{c}{CS} & \multicolumn{2}{c}{SE} &  \\
+    \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule{6-6}\morecmidrules\cmidrule{6-6}
+     & OS & CA & SEP & CSE & All \\
+    \midrule
+    wjb & 100 & 100 & 100 & 100 & A+ \\
+    dadadadawjb & 99 & 99 & 99 & 99 & A+ \\
+    Wang Junbo & 98 & 98 & 98 & 98 & A+ \\
+    \bottomrule
+\end{tabular}
+
+\begin{tabular}{c|cc}       % must usepackage makecell
+    \Xhline{2pt}
+    input & \multicolumn{2}{c}{output} \\
+    \Xcline{2-3}{0.4pt}
+    x & y & z \\
+    \Xhline{1pt}
+    1 & 1 & 1 \\
+    2 & 4 & 8 \\
+    \Xhline{2pt}
+\end{tabular}
+
+\begin{tabular}{vc|ccv}     % must usepackage array, bug exists
+    \hline
+    input & \multicolumn{2}{cv}{output} \\
+    \cline{2-3}
+    x & y & z \\
+    \hline
+    1 & 1 & 1 \\
+    2 & 4 & 8 \\
+    \hline
+\end{tabular}
+
+\subsubsection{Double Lines}
+Should omit double lines in tabular
+\begin{tabular}{|c||cc|}
+    \hline\hline
+    input & \multicolumn{2}{c|}{output} \\
+    \cline{2-3}
+    x & y & z \\
+    \hline\hline
+    1 & 1 & 1 \\
+    2 & 4 & 8 \\
+    \hline\hline
+\end{tabular}
+\begin{tabular}{|c||cc|}        % must usepackage hhline
+    \hhline{|=:t:==|}
+    x & y & z \\
+    \hhline{|=::==|}
+    1 & 1 & 1 \\
+    2 & 4 & 8 \\
+    \hhline{|=:b:==|}
+\end{tabular}
+
+\subsubsection{Dash Line}
+% conflict with hhline and makecell
+% \begin{tabular}{:c:cc:}           % must usepackage arydshln and array
+%     \firsthdashline
+%     input & \multicolumn{2}{c:}{output} \\
+%     \cdashline{2-3}
+%     x & y & z \\
+%     \hdashline
+%     1 & 1 & 1 \\
+%     2 & 4 & 8 \\
+%     \lasthdashline
+% \end{tabular}
+% \begin{tabular}{;{8pt/2pt}c;{2pt/2pt}cc;{8pt/2pt}}              % must usepackage arydshln and array
+%     \firsthdashline
+%     input & \multicolumn{2}{c;{8pt/2pt}}{output} \\
+%     \cdashline{2-3}[2pt/2pt]
+%     x & y & z \\
+%     \hdashline[8pt/2pt]
+%     1 & 1 & 1 \\
+%     2 & 4 & 8 \\
+%     \lasthdashline
+% \end{tabular}
+
+\subsection{Float Table}
+\subsubsection{Overview}
+\begin{table}[!htbp]
+    \centering
+    \bicaption[Tabular In Table]{\label{tab-float} Tabular In Table - Example Of Float Table}[浮动表格]{浮动表格的例子}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        left & center & right \\ \hline
+        item1 & item2 & item3 \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{Rotated Table}
+% must usepackage rotfloat
+\begin{sidewaystable}
+    \centering
+    \begin{tabular}{ccccccccc}
+        \hline
+        Left & LEFT & left & Middle & MIDDLE & middle & Right & RIGHT & right \\ \hline
+        $-4$ & $-3$ & $-2$ & $-1$ & $0$ & $1$ & $2$ & $3$ & $4$ \\ \hline
+    \end{tabular}
+\end{sidewaystable}
+
+\subsubsection{Side By Side}
+\paragraph{Table With Words}
+\begin{table}[H]
+    \centering
+    \caption{Table With Words Example}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        left & center & right \\ \hline
+        item1 & item2 & item3 \\ \hline
+    \end{tabular}
+    \qquad
+    \parbox[b]{0.4\textwidth}{This is the comment on the table.}
+\end{table}
+
+\paragraph{Tables Side By Side}
+\begin{table}[H]
+    \centering
+    \caption{Table Side By Side Example}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        left & center & right \\ \hline
+        item1 & item2 & item3 \\ \hline
+    \end{tabular}
+    \qquad
+    \begin{tabular}{|c|c|c|}
+        \hline
+        left & center & right \\ \hline
+        item1 & item2 & item3 \\ \hline
+    \end{tabular}
+\end{table}
+
+\paragraph{Captions For Side By Side}
+\begin{table}[H]
+    \caption{Title For Both}
+    \parbox[b]{0.5\textwidth}{\centering
+        \caption{Title For Left}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            left & center & right \\ \hline
+            item1 & item2 & item3 \\ \hline
+        \end{tabular}}
+    \parbox[b]{0.5\textwidth}{\centering
+        \caption{Title For Right}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            left & center & right \\ \hline
+            item1 & item2 & item3 \\ \hline
+        \end{tabular}}
+\end{table}
+
+\begin{table}[H]
+    % must usepackage subcaption
+    \caption{Title For Both}
+    \begin{subtable}[b]{0.5\textwidth}
+        \centering
+        \begin{tabular}{|c|c|c|}
+            \hline
+            left & center & right \\ \hline
+            item1 & item2 & item3 \\ \hline
+        \end{tabular}
+        \caption{Title For Left}
+    \end{subtable}
+    \begin{subtable}[b]{0.5\textwidth}
+        \centering
+        \begin{tabular}{|c|c|c|}
+            \hline
+            left & center & right \\ \hline
+            item1 & item2 & item3 \\ \hline
+        \end{tabular}
+        \caption{Title For Right}
+    \end{subtable}
+\end{table}
+
+\subsubsection{Table Arrounded By Words}
+\begin{tabwindow}[2, r, 
+    \begin{tabular}{|c|c|c|}
+        \hline
+        left & center & right \\ \hline
+        item1 & item2 & item3 \\ \hline
+    \end{tabular}, Title Of Arounded Table]             % must usepackage picinpar
+    % bug exists
+    These are the words around the table, and the table will appear below two lines, 
+    lying in the right of the words, rather than left. The following will be fillings. 
+    Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+    Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+    Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+    Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+    Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+    Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+    Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+    Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+    Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+    Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world.
+\end{tabwindow}
+
+\begin{wraptable}[10]{r}[1.5cm]{5cm}                    % must usepackage wrapfig
+    \centering
+    \caption{Title Of Arounded Table}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        left & center & right \\ \hline
+        item1 & item2 & item3 \\ \hline
+    \end{tabular}
+\end{wraptable}
+These are the words around the table, and the table will appear with height of 10 lines, 
+lying in the right of the words, rather than left, and it will extend out 1.5cm, and has width of 5cm. 
+The following will be fillings. 
+Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. 
+Hello world. Hello world. Hello world. Hello world. Hello world. Hello world. Hello world.
+
+\subsection{Color Table}
+% bug exists
+% \begin{tabular}{>{\columncolor{gray}}c | >{\columncolor{lightgray}}c}
+%     darker & lighter \\
+%     gray & gray \\
+% \end{tabular}
+
+% \begin{tabular}{c|c}
+%     \rowcolor{lightgray} light & gray \\
+%     just & white \\
+% \end{tabular}
+
+% \begin{tabular}{cccc}
+%     No & No & \cellcolor{lightgray}Yes & No \\
+%     \cellcolor{lightgray}Yes & No & No & No \\
+% \end{tabular}
+
+% \arrayrulecolor{gray}
+% \doublerulesepcolor{lightgray}
+% \begin{tabular}{cc}
+%     \hline\hline
+%     gray line & lightgray doubleline \\
+%     \arrayrulecolor{black}
+%     \doublerulesepcolor{white}
+%     \hline
+%     original black line & original white double line \\
+%     \hline\hline
+% \end{tabular}
+% \arrayrulecolor{black}                              % restore
+% \doublerulesepcolor{white}
+
+% \rowcolors[\hline]{2}{black!20}{black!10}
+% \begin{tabular}{crr}
+%     \rowcolor{black!30} person & OS & CA \\         % set the color of table header separately
+%     dadadadawjb & 100 & 100 \\
+%     Junbo Wang & 99 & 99 \\
+%     wjb & 98 & 98 \\
+% \end{tabular}

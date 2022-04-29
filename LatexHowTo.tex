@@ -1,0 +1,111 @@
+%-*- coding: UTF-8 -*-
+
+\documentclass[zihao=5, sub3section, UTF8, fontset=windows, scheme=plain, punct]{ctexart} % ctex documentclasses include ctexart, ctexrep and ctexbook
+% \documentclass[a4paper, landscape, oneside, 10pt, 
+%                 onecolumn, titlepage, openany, leqno, fleqn, 
+%                 draft, openbib]{article}   % latex basic document classes include article, report and book
+% by default, letterpaper, no landscape item, oneside, 10pt, 
+%               onecolumn, notitlepage, openany, no leqno item, no fleqn item, 
+%               final, no openbib item
+
+\input{LatexHowTo_Preamble.tex}
+
+\title{Latex How To\thanks{Special thanks to my family}}
+\author{dadadadawjb\thanks{Student of SJTU CS}\\SJTU \and Junbo Wang\thanks{Student of JSZX class of WanLi}\\JSZX}
+\date{\today}
+
+\includeonly{LatexHowTo_1_Fonts.tex, LatexHowTo_2_Blank.tex, LatexHowTo_3_Box.tex, LatexHowTo_4_Paragraph.tex, 
+            LatexHowTo_5_WordEnvironment.tex, LatexHowTo_6_List.tex, LatexHowTo_7_Theorem.tex, 
+            LatexHowTo_8_Verbatim.tex, LatexHowTo_9_Codes.tex, LatexHowTo_10_Tabular.tex, 
+            LatexHowTo_11_Notes.tex, LatexHowTo_12_LaTeXLogos.tex, LatexHowTo_13_StructureDemostration.tex, 
+            LatexHowTo_14_Macros.tex, LatexHowTo_15_CrossReference.tex, LatexHowTo_16_LiteratureReference.tex, 
+            LatexHowTo_17_Index.tex, LatexHowTo_18_Math.tex, LatexHowTo_19_Figure.tex}
+
+\begin{document}
+
+    \begin{titlepage}
+        \vspace*{\fill}
+        \begin{center}
+            \normalfont
+            {\Huge\bfseries Latex How To}
+
+            \bigskip
+            {\Large\itshape dadadadawjb}
+
+            \medskip
+            \today
+        \end{center}
+        \vspace{\stretch{3}}
+    \end{titlepage}
+
+    \addcontentsline{toc}{section}{\MyTitle}        % add title to table of contents
+    \addcontentsline{toc}{section}{\contentsname}   % add contents name to table of contents
+
+    \maketitle
+
+    \tableofcontents
+
+    \listoffigures
+
+    \listoftables
+
+    \listof{myfloat}{List of myfloat}               % must newfloat myfloat
+    
+    \listofmynewfloats                              % must DeclareFloatingEnvironment mynewfloat
+
+    \include{LatexHowTo_1_Fonts.tex}
+
+    \include{LatexHowTo_2_Blank.tex}
+
+    \include{LatexHowTo_3_Box.tex}
+
+    \include{LatexHowTo_4_Paragraph.tex}
+
+    \include{LatexHowTo_5_WordEnvironment.tex}
+
+    \include{LatexHowTo_6_List.tex}
+
+    \include{LatexHowTo_7_Theorem.tex}
+
+    \include{LatexHowTo_8_Verbatim.tex}
+
+    \include{LatexHowTo_9_Codes.tex}
+
+    \include{LatexHowTo_10_Tabular.tex}
+
+    \include{LatexHowTo_11_Notes.tex}
+
+    \include{LatexHowTo_12_LaTeXLogos.tex}
+
+    \include{LatexHowTo_13_StructureDemostration.tex}
+
+    \include{LatexHowTo_14_Macros.tex}
+
+    \include{LatexHowTo_15_CrossReference.tex}
+
+    % \include{ExternalCrossReference.tex}
+
+    \include{LatexHowTo_16_LiteratureReference.tex}
+
+    \include{LatexHowTo_17_Index.tex}
+
+    \include{LatexHowTo_18_Math.tex}
+
+    \include{LatexHowTo_19_Figure.tex}
+
+    \appendix
+    \section{Appendix Section}
+    This is the section of appendix.
+
+    \bibliography{LiteratureReference.bib}      % for iterature reference generating
+
+    \indexprologue{Index list 1 as follows.}    % for adding some additional description to index list
+    \printindex[index1]                         % for printing the index list 1
+    \indexprologue{Index list 2 as follows.}    % for adding some additional description to index list
+    \printindex[index2]                         % for printing the index list 2
+
+    % \printglossary                              % for printing the glossaries list, must usepackage glossaries
+    
+\end{document}
+
+Here can comment without mark.

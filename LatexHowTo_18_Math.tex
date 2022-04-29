@@ -1,0 +1,796 @@
+\section{Math}
+\subsection{Overview}
+\subsubsection{Inline Math Formula}
+$a+b=b+a$, \(a+b=b+a\), \begin{math}a+b=b+a\end{math}.
+% punctuation inline outside the math mode
+
+\subsubsection{Displayed Math Formula}
+$$
+a+b=b+a,
+$$
+\[
+    a+b=b+a,
+\]
+\begin{displaymath}
+    a+b=b+a.
+\end{displaymath}
+% punctuation displayed inside the math mode
+
+\subsubsection{Ensure Math Mode}
+% In plain text: \Box; In math mode: \ensuremath{\Box}, also $\ensuremath{\Box}$.   % bug exists
+
+\subsubsection{Indexed Math Formula}
+Indexed math formula:
+\begin{equation}
+    a+b=b+a \label{eq:commutative}  % label is not necessary
+\end{equation}
+
+None indexed math formula:
+\begin{equation*}
+    a+b=b+a % must usepackage amsmath, the same as \[\]
+\end{equation*}
+
+\subsubsection{Text In Math Mode}
+$ a + b = b + a \text{, where } a = 1 \text{ and } b = 2 $.
+
+\subsection{Structure}
+\subsubsection{Superscript And Subscript}
+$ a_i = i^2 $
+
+$ A_{ij} = 2^{i+j} $
+
+$ A_i^k = B^k_i $
+
+$ K_{n_i} = K_{2^i} = 2^{n_i} = 2^{2^i} $
+
+\paragraph{Prime}
+$ a' $, $ a'' $, $ a_0' = a'_0 $, $ {a'}^2 \neq  a'^2 $
+
+\paragraph{Digree}
+$ 90^\circ $
+
+\paragraph{Position}
+$ \max_n f(n) = \sum_{i=0}^n a_i = \int_0^n A(t)dt $, $ \max\limits_n f(n) = \sum\limits_{i=0}^n a_i = \int\limits_0^n A(t)dt $
+
+\[
+    \max_n f(n) = \sum_{i=0}^n a_i = \int_0^n A(t)dt
+\]
+\[
+    \max\nolimits_n f(n) = \sum\nolimits_{i=0}^n a_i = \int\limits_0^n A(t)dt
+\]
+
+$ \prescript{n}{m}{H}_i^j $     % must usepackage mathtools
+
+\[
+    \sideset{_a^b}{_c^d} \sum_{i=1}^{n} A_i = \sideset{}{'}{\prod_k} f_i        % must usepackage amsmath
+\]
+
+$ \overset{*}{X} $, $ \underset{*}{X} $, $ \overset{*}{\underset{\dag}{X}} $    % must usepackage amsmath
+
+$ A_m^n \neq A_m{}^n $
+
+$ M\indices{^a_b^{cd}_e} $, $ \tensor[^a_b^c_d]{M}{^a_b^c_d} $  % must usepackage tensor
+
+\paragraph{Mhchem}
+\ce{H2O}, \ce{CH3COO-}, \ce{^{227}_{90}Th}.     % must usepackage mhchem
+
+\begin{equation}
+    \ce{2H2 + O2 ->[\text{fire}] 2H2O}
+\end{equation}
+
+\subsubsection{Overline And Underline}
+$ \overline{a + b} = \overline{a} + \overline{b} $
+
+$ \underline{a - b} = \underline{a} - \underline{b} $
+
+$ \overbrace{a + b + \cdots + c}^{n+1} = \underbrace{0 + 0 + \cdots + 0}_{n} + 1 $
+
+$ \overbracket{a + b + \cdots + c}^{n+1} = \underbracket{0 + 0 + \cdots + 0}_{n} + 1 $      % must usepackage mathtools
+
+$ \overleftarrow{a + b} $, $ \overrightarrow{a + b} $, $ \overleftrightarrow{a + b} $       % must usepackage amsmath
+
+$ \underleftarrow{a - b} $, $ \underrightarrow{a - b} $, $ \underleftrightarrow{a - b} $
+
+\subsubsection{Fraction}
+Inline size: $ \frac{a}{b} $.
+
+Displayed size:
+\[
+    \frac{a}{b}
+\]
+
+Inside size:
+\[
+    \frac{1}{\frac{1}{2}(a + b)} = \frac{2}{a + b}
+\]
+
+Change size:
+\[
+    \tfrac{a}{b} = \frac{1}{\dfrac{b}{a}}   % must usepackage amsmath
+\]
+
+Continued fraction:
+\[
+    \cfrac{1}{1 + \cfrac{2}{1 + \cfrac{3}{1 + x}}} = \cfrac[c]{1}{1 + \cfrac[l]{2}{1 + \cfrac[r]{3}{1 + x}}}    % must usepackage amsmath
+\]
+
+Inline ambiguity: $ 1 / a + b $ and $ \sfrac{1}{a} + b $        % must usepackage xfrac
+
+\paragraph{Binomial}
+% must usepackage amsmath
+Inline size: $ \binom{a}{b} $.
+
+Displayed size:
+\[
+    \binom{a}{b}
+\]
+
+Inside size:
+\[
+    \frac{1}{\binom{a}{b}}
+\]
+
+Change size:
+\[
+    \tbinom{a}{b} \neq \frac{1}{\dbinom{b}{a}}
+\]
+
+\paragraph{General Fraction}
+\[
+    \stiring{a}{b} = \dstiring{a}{b} = \tstiring{a}{b}
+\]
+
+\subsubsection{Root}
+$ \sqrt{4} = \sqrt[3]{8} $
+
+\[
+    \sqrt[n]{\frac{x}{y}}
+\]
+\[
+    \sqrt[\uproot{16}\leftroot{-2}n]{\frac{x}{y}}   % must usepackage amsmath
+\]
+
+$ \sqrt{\frac{1}{2}} < \sqrt{ \vphantom{\frac{1}{2}} 2} = \sqrt{2} $
+
+$ \sqrt{b} \sqrt{y} $, $ \sqrt{\mathstrut b} \sqrt{\mathstrut y} $
+
+\subsubsection{Matrix}
+% must usepackage amsmath
+\[
+    A = \begin{matrix}
+            a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{32} & a_{33}
+        \end{matrix} \qquad
+    B = \begin{bmatrix}
+            b_{11} & b_{12} & b_{13} \\
+            b_{21} & b_{22} & b_{23} \\
+            b_{31} & b_{32} & b_{33}
+        \end{bmatrix} \qquad
+    C = \begin{vmatrix}
+            c_{11} & c_{12} & c_{13} \\
+            c_{21} & c_{22} & c_{23} \\
+            c_{31} & c_{32} & c_{33}
+        \end{vmatrix}
+\]
+\[
+    D = \begin{pmatrix}
+            d_{11} & d_{12} & d_{13} \\
+            d_{21} & d_{22} & d_{23} \\
+            d_{31} & d_{32} & d_{33}
+        \end{pmatrix} \qquad
+    E = \begin{Bmatrix}
+            e_{11} & e_{12} & e_{13} \\
+            e_{21} & e_{22} & e_{23} \\
+            e_{31} & e_{32} & e_{33}
+        \end{Bmatrix} \qquad
+    F = \begin{Vmatrix}
+            f_{11} & f_{12} & f_{13} \\
+            f_{21} & f_{22} & f_{23} \\
+            f_{31} & f_{32} & f_{33}
+        \end{Vmatrix}
+\]
+% no need usepackage
+\[
+    \bordermatrix{
+          & 1 & 2 & 3 \cr
+        1 & A & B & C \cr
+        2 & D & E & F \cr
+    }
+\]
+
+\[
+    \begin{pmatrix}
+        \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} & \text{\Large 0} \\
+        \text{\Large 0} & \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix}
+    \end{pmatrix}
+\]
+
+$ \left(
+    \begin{smallmatrix}
+        x & -y \\ y & x
+    \end{smallmatrix}
+\right) $
+
+\paragraph{Dots In Matrix}
+\[
+    \begin{bmatrix}
+        a_{11} & \dots  & a_{1n} \\
+               & \ddots & \vdots \\
+        \hdotsfor{3}             \\
+        0      &        & a_{nn}
+    \end{bmatrix}
+\]
+
+\paragraph{Matrix In Superscript And Subscript}
+\[
+    \sum_{\substack{0<i<n \\ 0<j<i}} A_{ij}
+\]
+\[
+    \sum_{\begin{subarray}{l} i<10 \\ j<100 \\ k<1000 \end{subarray}} X(i, j, k) \qquad
+    \sum_{\begin{subarray}{c} i<10 \\ j<100 \\ k<1000 \end{subarray}} Y(i, j, k) \qquad
+    \sum_{\begin{subarray}{r} i<10 \\ j<100 \\ k<1000 \end{subarray}} Z(i, j, k)
+\]
+
+\paragraph{Alignment In Matrix}
+% must usepackage mathtools
+\[
+    \begin{pmatrix*}[r]
+        10 & -10 \\ -20 & 3
+    \end{pmatrix*}
+\]
+
+\paragraph{Array For Matrix}
+\[
+    \begin{array}({cc}]     % must usepackage delarray
+        1 & 2 \\
+        3 & 4
+    \end{array}
+\]
+
+% \[
+%     \begin{tabu}[{cc})      % must usepackage tabu with delarray option, bug exists
+%         1 & 2 \\
+%         3 & 4
+%     \end{tabu}
+% \]
+
+\[
+    \begin{blockarray}{(cc]}    % must usepackage blkarray
+        1 & 2 \\
+        3 & 4
+    \end{blockarray}
+\]
+
+\[ \left[
+    \begin{blockarray}{*4r}     % must usepackage blkarray
+        \begin{block}{(rr)rr}
+            a & -b & 0 & 0 \\
+            -c & d & 0 & 0 \\
+        \end{block}
+        \begin{block}{rr(rr)}
+            0 & 0 & -a & b \\
+            0 & 0 & c & -d \\
+        \end{block}
+    \end{blockarray}
+\right] \]
+
+\subsection{Fonts}
+$ \mathnormal{Hello123World} $
+
+$ \mathit{Hello123World} $
+
+$ \mathrm{Hello123World} $
+
+$ \mathbf{Hello123World} $
+
+$ \mathsf{Hello123World} $
+
+$ \mathtt{Hello123World} $
+
+$ \mathcal{Hello123World} $     % only support uppercase
+
+$ \mathbb{Hello123World} $      % must usepackage amssymb, only support uppercase
+
+$ \mathfrak{Hello123World} $    % must usepackage amssymb
+
+Special symbol should use special font in math mode instead of by default: 
+$ \mi $, $ \me $, $ \uppi $, $ \int f(x) \diff x $, $ \iint \frac{\dif y}{f(x, y)} \dif x $     % \uppi must usepackage upgreek
+
+Multiply: $xyz$; Variable name: $ \mathit{xyz} $.
+
+Bold math: 
+{\boldmath{$a^2$}},                                 % vanilla latex
+$ \boldsymbol{v} $, $ \pmb\sum $,                   % must usepackage amsmath
+$ \bm{u} + \hm{u} $, $ \bm{\int} < \hm{\int} $      % must usepackage bm
+
+Font size: 
+\[\displaystyle
+    \sum A(n)
+\]
+\[\textstyle
+    \sum B(n)
+\]
+\[\scriptstyle
+    \sum C(n)
+\]
+\[\scriptscriptstyle
+    \sum D(n)
+\]
+
+\subsection{Symbols}
+% TODO: extract commonly used symbols out
+\subsubsection{\textcircled{1} Normal Symbols And \textcircled{2} Variable Family}
+\paragraph{Lowercase Greek Letters}
+{\LARGE
+    $ \alpha, \beta, \gamma, \delta, (\epsilon), \zeta, \eta, \theta, \iota, \kappa, \lambda, \mu, 
+    \nu, \xi, \pi, \rho, \sigma, \tau, \upsilon, (\phi), \chi, \psi, \omega $
+
+    $ (\varepsilon), \vartheta, \varpi, \varrho, \varsigma, (\varphi), 
+    \varkappa, \digamma $   % must usepackage amssymb (last two)
+}
+
+\paragraph{Uppercase Greek Letters}
+{\LARGE
+    $ \Gamma, \Delta, \Theta, \Lambda, \Xi, \Pi, \Sigma, \Upsilon, \Phi, \Psi, \Omega $
+
+    $ \varGamma, \varDelta, \varTheta, \varLambda, \varXi, \varPi, \varSigma, \varUpsilon, \varPhi, \varPsi, \varOmega $    % must usepackge amsmath
+}
+
+\paragraph{Hebrew Alphabet}
+{\LARGE
+    $ \aleph $
+
+    $ \beth, \daleth, \gimel $  % must usepackage amssymb
+}
+
+\paragraph{Upright Greek Letters}
+% must usepackage upgreek
+{\LARGE
+    $ \upalpha, \upbeta, \upgamma, \updelta, \upepsilon, \upeta, \uptheta, \upiota, \upkappa, \uplambda, \upmu, 
+    \upnu, \upxi, \uppi, \uprho, \upsigma, \uptau, \upupsilon, \upphi, \upchi, \uppsi, \upomega $
+
+    $ \upvarepsilon, \upvartheta, \upvarpi, \upvarrho, \upvarsigma, \upvarphi $     % no \upvarkappa and \updigamma
+}
+
+\paragraph{Math Accents}
+{\LARGE
+    $ \bar{a}, \acute{a}, \grave{a}, \check{a}, \breve{a}, \tilde{a}, \hat{a}, \vec{a}, \mathring{a}, \dot{a}, \ddot{a}, 
+    \ddddot{a}, \ddddot{a} $    % must usepackage amsmath (last two)
+
+    $ \widetilde{abc}, \widehat{abc}, 
+    \widetriangle{abc}, \wideparen{abc} $       % must usepackage yhmath
+
+    $ abc\spbreve, abc\spcheck, abc\spdot, abc\spddot, abc\spdddot, abc\sphat, abc\sptilde $    % must usepackage amsxtra
+
+    $ \accentset{*}{a}, \underaccent{*}{a}, \underaccent{\check}{a} $    % must usepackage accents
+}
+
+Change the accents position: $ \ddot{h} $ vs $ \skew{-2}{\ddot}{h} $.
+
+\paragraph{Symbols}
+{\LARGE
+    $ \hbar, \hslash, \imath, \jmath, \ell, \wp, \Re, \Im, \mho, \eth, \Finv, \Game, \Bbbk $
+    
+    $ \partial, \infty, \prime, \backprime, (\emptyset), (\varnothing), \forall, \exists, \nexists, 
+    \neg, \top, \bot, \surd, \angle, \sphericalangle, \measuredangle $
+    
+    $ \flat, \natural, \sharp $
+    
+    $ \nabla, \triangle, \vartriangle, \blacktriangle, \triangledown, \blacktriangledown, \square, \blacksquare, \lozenge, \blacklozenge, 
+    \clubsuit, \spadesuit, \diamondsuit, \heartsuit, \bigstar $
+
+    $ \backslash, \diagup, \diagdown, \circledS, \complement $
+}
+
+\subsubsection{\textcircled{3} Operators}
+\paragraph{Large Operators}
+\[
+    \sum, \prod, \coprod, \int, \oint
+\]
+\[
+    \bigcup, \biguplus, \bigsqcup, \bigvee, \bigwedge, \bigcap
+\]
+\[
+    \bigodot, \bigoplus, \bigotimes
+\]
+\[
+    \iint, \iiint, \iiiint, \idotsint       % must usepackage amsmath
+\]
+
+\paragraph{Word Operators}
+\subparagraph{Non-limit}
+{\LARGE
+    $ \log x, \lg x, \ln x $
+    
+    $ \sin x, \arcsin x, \cos x, \arccos x, \tan x, \arctan x, \cot x $
+    
+    $ \sinh x, \cosh x, \tanh x, \coth x, \sec x, \csc x $
+
+    $ \arg x, \ker x, \dim x, \hom x, \exp x, \deg x $
+
+    $ r = m \bmod n $, $ r = m \pmod n $
+
+    $ r = m \mod n $, $ r = m \pod n $      % must usepackage amsmath
+}
+
+\subparagraph{With-limit}
+{\LARGE
+    $ \lim x, \limsup x, \liminf x, \max x, \min x $
+    
+    $ \sup x, \inf x, \det x, \Pr x, \gcd x $
+
+    $ \varliminf x, \varlimsup x, \injlim x, \projlim x, \varinjlim x, \varprojlim x $      % must usepackage amsmath
+}
+
+\paragraph{Customize Operators}
+% must usepackage amsmath
+{\LARGE
+    $ |A| = \card (A) $     % must DeclareMathOperator
+
+    $ \operatorname*{Prob}_{} (X) = 0 $     % if `*` then with limit
+}
+
+\subsubsection{\textcircled{4} Binary Operators And \textcircled{5} Relation Operators}
+\paragraph{Binary Operators}
+{\LARGE
+    $ a + b, a - b, a * b $     % not include `/` (just normal symbol)
+
+    $ a \triangleleft b, a \triangleright b, a \bigtriangleup b, a \bigtriangledown b $
+
+    $ a \wedge b,   % also as a \land b
+    a \vee b,       % also as a \lor b
+    a \cap b, a \cup b, a \sqcap b, a \sqcup b, a \uplus b, a \amalg b $
+
+    $ a \div b, a \ast b,      % the same as `*`
+    a \times b, a \cdot b, a \star b, a \mp b, a \pm b, a \setminus b $
+
+    $ a \circ b, a \bigcirc b, a \bullet b, a \diamond b, a \odot b, a \oslash b, a \otimes b, a \oplus b $
+
+    $ a \wr b, a \dagger b, a \ddagger b $
+}
+
+\vspace{2em}
+
+{\LARGE
+% must usepackage amsmath
+    $ a \dotplus b, a \smallsetminus b, a \intercal b, a \curlywedge b, a \curlyvee b, a \centerdot b $
+
+    $ a \Cap b,     % also as a \doublecap b
+    a \Cup b,       % also as a \doublecup b
+    a \barwedge b, a \veebar b, a \doublebarwedge b $
+
+    $ a \boxminus b, a \boxdot b, a \boxplus b, a \circleddash b, a \circledast b, a \circledcirc b $
+
+    $ a \ltimes b, a \rtimes b, a \divideontimes b, a \leftthreetimes b, a \rightthreetimes b $
+
+    $ a \lhd b, a \unlhd b, a \rhd b, a \unrhd b $
+}
+
+Used to turn into binary operator, $ a \mathbin{\heartsuit} b $.
+
+\paragraph{Relation Operators}
+{\LARGE
+% not form always need usepackage amsmath
+    $ a = b, a > b, a < b, a : b $
+
+    $ a \neq b,     % also as a \ne b, no need for usepackage amsmath
+    a \ngtr b,      % must usepackage amsmath
+    a \nless b $    % must usepackage amsmath
+
+    $ a \leq b,     % also as a \le b
+    a \nleq b, a \lneq b, a \geq b,    % also as a \ge b
+    a \ngeq b, a \gneq b, a \ll b,     % no not form
+    a \gg b $       % no not form
+
+    $ a \prec b, a \nprec b, a \succ b, a \nsucc b $
+
+    $ a \preceq b, a \npreceq b, a \precneqq b, a \succeq b, a \nsucceq b, a \succneqq b $
+
+    $ a \sim b, a \nsim b, a \approx b,     % no not form
+    a \simeq b,     % no not form
+    a \cong b, a \ncong b, a \equiv b,      % no not form
+    a \doteq b $    % no not form
+
+    $ a \in b, a \notin b,  % no need for usepackage amsmath
+    a \ni b,        % also as a \owns b, no not form
+    a \subset b,    % no not form
+    a \supset b $   % no not form
+
+    $ a \subseteq b, a \nsubseteq b, a \subsetneq b, a \varsubsetneq b, 
+    a \supseteq b, a \nsupseteq b, a \supsetneq b, a \varsupsetneq b $
+
+    $ a \smile b,   % no not form
+    a \frown b,     % no not form
+    a \perp b,      % no not form
+    a \models b,    % no not form
+    a \vdash b, a \nvdash b, a \dashv b $   % no not form
+
+    $ a \mid b, a \nmid b, a \parallel b, a \nparallel b $
+    
+
+    $ a \propto b,  % no not form
+    a \asymp b,     % no not form
+    a \bowtie b, a \Join b $    % no not form
+}
+
+\vspace{2em}
+
+{\LARGE
+% must usepackage amsmath
+    $ a \leqq b, a \nleqq b, a \lneqq b, a \lvertneqq b, 
+    a \geqq b, a \ngeqq b, a \gneqq b, a \gvertneqq b $
+
+    $ a \leqslant b, a \nleqslant b, a \geqslant b, a \ngeqslant b $
+
+    $ a \lesssim b, a \lnsim b, a \gtrsim b, a \gnsim b, 
+    a \lessapprox b, a \lnapprox b, a \gtrapprox b, a \gnapprox b $
+
+    $ a \precsim b, a \precnsim b, a \succsim b, a \succnsim b, 
+    a \precapprox b, a \precnapprox b, a \succapprox b, a \succnapprox b $
+
+    $ a \subseteqq b, a \nsubseteqq b, a \subsetneqq b, a \varsubsetneqq b, 
+    a \supseteqq b, a \nsupseteqq b, a \supsetneqq b, a \varsupsetneqq b $
+
+    $ a \vartriangleleft b, a \ntriangleleft, a \vartriangleright b, a \ntriangleright b, 
+    a \trianglelefteq b, a \ntrianglelefteq b, a \trianglerighteq b, a \ntrianglerighteq $
+
+    $ a \shortmid b, a \nshortmid b, a \shortparallel b, a \nshortparallel b $
+
+    $ a \vDash b, a \nvDash b, a \Vdash b, a \nVdash b, a \Vvdash b, a \nVDash $
+}
+
+\vspace{2em}
+
+{\LARGE
+% must usepackage amsmath, no not form
+    $ a \eqslantless b, a \eqslantgtr b, a \approxeq b, a \lessdot b, a \gtrdot b, a \lll b, a \ggg b $
+
+    $ a \lessgtr b, a \gtrless b, a \lesseqgtr b, a \gtreqless b, a \lesseqqgtr b, a \gtreqqless b $
+
+    $ a \doteqdot b, a \triangleq b, a \eqcirc b, a \circeq b, a \risingdotseq b, a \fallingdotseq b $
+
+    $ a \backsim b, a \thicksim b, a \backsimeq b, a \thickapprox b $
+
+    $ a \preccurlyeq b, a \succcurlyeq b, a \sqsubseteq b, a \sqsupseteq b, 
+    a \sqsubset b, a \sqsupset b, a \Subset b, a \Supset b $
+
+    $ a \smallsmile b, a \smallfrown b, a \bumpeq b, a \Bumpeq b, 
+    a \between b, a \pitchfork b, a \varpropto b, a \backepsilon b $
+
+    $ a \blacktriangleleft b, a \blacktriangleright b $
+
+    $ a \therefore b, a \because b $
+}
+
+Used to turn into relation operator, $ a \mathrel{\overline{\in}} b $.
+
+\paragraph{Arrows}
+{\LARGE
+% not form always need usepackage amsmath
+    $ a \leftarrow b,   % also as a \gets b
+    a \nleftarrow b, a \rightarrow b,   % also as a \to b
+    a \nrightarrow b $
+    
+    $ a \Leftarrow b, a \nLeftarrow b, a \Rightarrow b, a \nRightarrow b $
+
+    $ a \leftrightarrow b, a \nleftrightarrow b, a \Leftrightarrow b, a \nLeftrightarrow b $
+
+    $ a \longleftarrow b, a \longrightarrow b, a \Longleftarrow b, a \Longrightarrow b, a \longleftrightarrow b, a \Longleftrightarrow b $
+
+    $ a \mapsto b, a \longmapsto b, a \hookleftarrow b, a \hookrightarrow b $
+
+    $ a \leftharpoonup b, a \rightharpoonup b, a \leftharpoondown b, a \rightharpoondown b, a \rightleftharpoons b $
+
+    $ a \nearrow b, a \searrow b, a \swarrow b, a \nwarrow b $
+
+    $ a \uparrow b, a \Uparrow b, a \downarrow b, a \Downarrow b, a \updownarrow b, a \Updownarrow b $
+}
+
+\vspace{2em}
+
+{\LARGE
+% must usepackage amsmath
+    $ a \leftleftarrows b, a \rightrightarrows b, a \leftrightarrows b, a \rightleftarrows b, a \upuparrows b, a \downdownarrows b $
+
+    $ a \Lleftarrow b, a \Rrightarrow b, a \twoheadleftarrow b, a \twoheadrightarrow b, 
+    a \leftarrowtail b, a \rightarrowtail b $
+
+    $ a \leftrightharpoons b, a \rightleftharpoons b,   % redefine in amsmath
+    a \upharpoonleft b, a \upharpoonright b,    % also as a \restriction b
+    a \downharpoonleft b, a \downharpoonright b $
+
+    $ a \curvearrowleft b, a \curvearrowright b, a \circlearrowleft b, a \circlearrowright b, 
+    a \Lsh b, a \Rsh b, a \looparrowleft b, a \looparrowright b $
+
+    $ a \multimap b, a \rightsquigarrow b, a \leftrightsquigarrow b, a \leadsto b $
+}
+
+\paragraph{Logical Operators}
+$ P \iff Q $
+
+$ P \implies Q $
+
+$ P \impliedby Q $
+
+\paragraph{Stack Relation}
+{\LARGE
+    $ f(x) \defeq ax+b $
+}
+
+\vspace{2em}
+
+{\LARGE
+    $ A \xleftarrow{0<x<1} B \xrightarrow[x\leq 0]{x\geq 1} C $   % must usepackage amsmath
+}
+
+\vspace{2em}
+
+{\LARGE
+% must usepackage extarrows
+    $ A \xlongleftarrow{0<x<1} B \xlongrightarrow[x\leq 0]{x\geq 1} C $
+
+    $ A \xLongleftarrow{0<x<1} B \xLongrightarrow[x\leq 0]{x\geq 1} C $
+
+    $ A \xleftrightarrow[xyz]{a+b+c} B \xLeftrightarrow[xyz]{a+b+c} A 
+    \xlongleftrightarrow[xyz]{a+b+c} B \xLongleftrightarrow[xyz]{a+b+c} A $
+
+    $ A \xlongequal[xyz]{a+b+c} B $
+}
+
+\subsubsection{\textcircled{6} Parentheses And \textcircled{7} Delimiters}
+$ (Hello) $, $ [Hello] $, $ \{ Hello \} $,      % also as \lbrace and \rbrace
+$ \langle Hello \rangle $, $ \lfloor Hello \rfloor $, $ \lceil Hello \rceil $
+
+$ \left( Hello \middle\vert World \right) $, $ \bigl( Hello \bigm\vert World \bigr) $, 
+$ \Bigl( Hello \Bigm\vert World \Bigr) $, $ \biggl( Hello \biggm\vert World \biggr) $, 
+$ \Biggl( Hello \Biggm\vert World \Biggr) $
+
+\subsubsection{\textcircled{8} Punctuations}
+$ x \colon f(x) $ vs $ x : f(x) $
+
+$ 1, \ldots, n $, $ 1 + \cdots + n $, 
+$ (1, \dots, 1) + \dots + (n, \dots, n) $   % must usepackage amsmath
+
+$ 1, \vdots, n $, $ 1, \ddots n $, $ 1, \iddots n $     % \iddots must usepackage mathdots
+
+$ 1, \dotsc, n $, $ 1 + \dotsb + n $, $ 1 \dotsm n $, $ \int_0^1 \dotsi \int_0^1 $, $ \dotso $  % must usepackage amsmath
+
+\subsection{Multiple-line Formula}
+\subsubsection{Different Formula Different Lines}
+\begin{gather}
+    a + b = b + a \\
+    a - b = b - a \\
+    a \times b = b \times a \notag \\
+    a \div b \neq b \div a
+\end{gather}    % if `*` then no index
+
+\begin{align}
+    d &= a + b + c & t &= r \times s \notag \\
+    z &= x - y & q &= l \div m \div n \div o \div p
+\end{align}     % if `*` then no index
+\begin{align}
+        & (a + b)(a - b) + 2ab \notag \\
+    ={} & a^2 - b^2 + 2ab \notag \\
+    ={} & (a - b)^2
+\end{align}
+\begin{align}
+    &\mathrel{\phantom{=}} (a + b)(a - b) + 2ab \notag \\
+    &= a^2 - b^2 + 2ab \notag \\
+    &= (a - b)^2
+\end{align}
+\begin{align}
+    x^2 + 2x &= -1
+    \intertext{transpose got}
+    x^2 + 2x + 1 &= 0
+    \shortintertext{merge got}  % must usepackage mathtools
+    (x + 1)^2 &= 0
+\end{align}
+
+\begin{flalign}
+    2 &= 1 + 1      & 1 &= 1 \times 1 \\
+    20 &= 10 + 10   & 100 &= 10 \times 10
+\end{flalign}   % if `*` then no index
+
+\begin{alignat}{2}
+    x &= \sin t &\quad & y = \cos t \\
+    z &= \tan t &      & w = \cot t
+\end{alignat}   % if `*` then no index
+
+\begin{subequations}
+    \begin{align}
+        a_{11}x + a_{12}y + a_{13}z &= A \\
+        a_{21}x + a_{22}y + a_{23}z &= B \\
+        a_{31}x + a_{32}y + a_{33}z &= C
+    \end{align}
+\end{subequations}
+
+\subsubsection{One Formula Into Lines}
+\begin{multline}
+    1 + 2 + 3 \\
+    \shoveleft{+ 4 + 5 + 6} \\
+    + 7 + 8 + 9 \\
+    \shoveright{+ 10 + 11 + 12} \\
+    + 13 + 14 + 15
+\end{multline}  % if `*` then no index
+
+% \begin{equation}
+%     \begin{split}
+%         \cos 2x &= \cos^2 x - \sin^2 x \\
+%                 &= 2\cos^2 x - 1
+%     \end{split}                            % bug exists
+% \end{equation}
+
+% \begin{dmath}
+%     \frac{1}{2} (\sin (x + y) + \sin (x - y)) = 
+%     \frac{1}{2} (\sin x \cos y + \cos x \sin y) + \frac{1}{2} (\sin x \cos y - \cos x \sin y) = 
+%     \sin x \cos y
+% \end{dmath}     % must usepackage breqn, if `*` then no index, bug exists
+
+\subsubsection{Lines Into One Formula}
+\begin{equation}
+    D(x) = 
+    \begin{cases}
+        1, & \text{if } x \in \mathbb{Q}; \\
+        0, & \text{if } x \in \mathbb{R}\setminus\mathbb{Q}.
+    \end{cases}
+\end{equation}
+
+\begin{numcases}{D(x)=}
+    1, & if $x \in \mathbb{Q}$; \\
+    0, & if $x \in \mathbb{R}\setminus\mathbb{Q}$.
+\end{numcases}      % must usepackage cases
+
+\begin{equation}
+    \begin{gathered}
+        S \subseteq T \\
+        S \supseteq T
+    \end{gathered}
+    \implies S = T
+\end{equation}      % by default centering, if `t` then align by the first line, if `b` then align by the last line
+\begin{equation}
+    \begin{aligned}
+        f(x) &\leq x \\
+        x    &\leq f(x)
+    \end{aligned}
+    \implies f(x) = x
+\end{equation}      % by default centering, if `t` then align by the first line, if `b` then align by the last line
+\begin{equation}
+    \begin{alignedat}{2}
+        f(x) &\in x &\quad g(x) &\subset x \\
+        x    &\in f(x) &\quad x &\subset g(x)
+    \end{alignedat}
+    \implies f(x) = x, g(x) = x
+\end{equation}      % by default centering, if `t` then align by the first line, if `b` then align by the last line
+
+\subsection{Index}
+\begin{equation}
+    a^2 + b^2 = c^2 \notag
+\end{equation}
+\begin{equation*}
+    a^2 + b^2 = c^2 \tag{$\star $}
+\end{equation*}
+\begin{equation*}
+    a^2 + b^2 = c^2 \tag*{[gougu]}
+\end{equation*}
+
+\subsection{Seperate}
+\[
+    a + b \quad a {+} b \quad a \mathord{+} b
+\]
+\[
+    \max n \quad {\max} n \quad \mathord{\max} n
+\]
+
+\begin{gather}
+    [\,]\colon 3mu \\
+    [\:] or [\>]\colon 4mu plus 2mu minus 4mu \\
+    [\;]\colon 5mu plus 5mu \\
+    [\!]\colon -3mu \\
+    [\mspace{18mu}]\colon 18mu \\
+    [\quad]\colon 1em \\
+    [\qquad]\colon 2em
+\end{gather}
+
+\subsection{Hyphenation}
+$ F(x)\* G(x)\* H(x) $

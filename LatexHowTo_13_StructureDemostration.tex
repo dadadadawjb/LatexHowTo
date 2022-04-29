@@ -1,0 +1,43 @@
+\thispagestyle{plain}
+
+\section[Structure]{Structure Demostration}
+\subsection*{No-index subsection}
+\begin{multicols}{3}
+    This is the first column.
+    \columnbreak
+    This is the second column.
+    \columnbreak
+    This is the third column.
+\end{multicols}
+
+\twocolumn[\centering The Title Of Both Columns]
+\subsection{Structure Abbreviation}
+part: part \par
+chap: chapter \par
+sec: section \par
+subsec: subsection \par
+subsubsec: subsubsection \par
+para: paragraph \par
+subpara: subparagraph \par
+fig: figure \par
+tab: table \par
+eq: equation \par
+fn: footnote \par
+item: item \par
+thm: theorem \par
+algo: algorithm
+
+\newpage    % \newpage and \pagebreak in two columns mode mean newcolumn instead
+
+\subsection{Another Sub-section}
+
+\onecolumn
+
+\begin{landscape}           % must usepackage pdflscape
+    \subsection{Rotated Page}
+    If pdflscape, then page rotate and text not; else lscape, then text rotate and page not.
+\end{landscape}
+
+\endinput
+
+Here can comment without mark.

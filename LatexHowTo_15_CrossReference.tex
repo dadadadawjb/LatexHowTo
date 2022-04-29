@@ -1,0 +1,42 @@
+\section{Cross Reference}
+\label{sec:cross-ref}
+
+\begin{align}
+    c^2 &= a^2 + b^2
+    \label{eq:gougu-formula} \\
+    5^2 &= 3^2 + 4^2
+    \label{eq:gougu-example}
+\end{align}
+
+The gougu formula \eqref{eq:gougu-formula} appears in                       % \eqref must usepackage amsmath
+\pageref{eq:gougu-formula} page from section \ref{sec:cross-ref}.
+
+The gougu example \autoref{eq:gougu-example} appears in                     % \autoref needs usepackage hyperref
+page \pageref{eq:gougu-formula} of \pageref{LastPage}                       % \pageref{LastPage} must usepackage lastpage
+from section \nameref{sec:cross-ref}.                                       % \nameref must usepackage nameref
+
+This is the reference from external cross reference file \nameref{ex:sec:external}.
+
+\url{https://www.sjtu.edu.cn}       % must usepackage hyperref
+
+\nolinkurl{https://www.sjtu.edu.cn}     % must usepackage hyperref
+
+\path{E:\UsefulTools\Codes\LatexHowTo\LatexHowTo.tex}   % must usepackage hyperref
+
+\href{https://www.sjtu.edu.cn}{SJTU Website}            % must usepackage hyperref
+
+\hyperref[eq:gougu-formula]{Gougu Formula}              % must usepackage hyperref
+
+\hypertarget{hpref:target}{This is a line set as hyper target.}     % must usepackage hyperref, referenced by \hyperlink
+
+\hyperlink{hpref:target}{This is a line that can be click to hyperref to the hyper target.}     % must usepackage hyperref, targetted by \hypertarget
+
+\phantomsection         % must usepackage hyperref
+\addcontentsline{toc}{subsection}{Additional Subsection For Cross Reference}
+\subsection*{Additional Subsetion}
+
+\hyperlink{subsec:additional-cross-ref}{To bookmark}    % pdfbookmark can also be hyperref to
+
+\subsection{Another Subsetion \texorpdfstring{$\frac{1}{\pi}$}{1/π}}                % must usepackage hyperref, protect bookmark
+\pdfbookmark[2]{Added Bookmark For Cross Reference}{subsec:bookmark-cross-ref}      % must usepackage hyperref, manually add a bookmark
+Hello world!

@@ -1,0 +1,61 @@
+\section{Box}
+\subsection{Horizontal Box}
+\mbox{Horizon contents, cannot be broken.}
+
+\makebox[3cm][s]{Stretched contents}    % c for center, l for left, r for right, s for stretched
+
+\makebox[0pt][l]{overlap}word   % can be used for overlap
+
+word\llap{overlap}, \rlap{overlap}word  % specialized command for overlap
+
+\fbox{Framed box.}
+
+\framebox[3cm][s]{Stretched contents}   % c for center, l for left, r for right, s for stretched
+
+{\setlength\fboxsep{0pt} \fbox{tight framebox}
+
+\setlength\fboxsep{1em} \fbox{loose framebox}}  % by default 3pt
+
+{\setlength\fboxrule{0.1pt} \fbox{thin framebox}
+
+\setlength\fboxrule{1pt} \fbox{thick framebox}} % by default 0.4pt
+
+\usebox\mybox  % must be newsaveboxed
+
+\subsection{Vertical Box}
+This is a \fbox{\parbox[c][2em][c]{3em}{vertical box}}.     % the first can be c,t,b, and the other can be c,t,b,s
+
+\fbox{\begin{minipage}[c][2em][c]{6em}                      % the first can be c,t,b, and the other can be c,t,b,s
+    This is a vertical box.
+\end{minipage}}
+
+\fbox{\begin{varwidth}{10cm}    % must usepackage varwidth, parameter is the biggest allowed width
+    natrual \\ width
+\end{varwidth}}
+
+\subsection{Rule Box}
+\rule{1pt}{1em}Middle\rule{1pt}{1em}
+
+Left\rule[0.5ex]{2cm}{0.6pt}Right
+
+QED\rule[-0.1em]{1em}{1em}
+
+\subsection{Strut}
+(支\strut 架)
+
+\subsection{Raise Box}
+\mbox{T\hspace{-0.1667em}%
+\raisebox{-0.5ex}{E}%
+\hspace{-0.125em}X}
+
+\subsection{Geometry Box}
+% must usepackage graphicx
+\scalebox{2}[2]{TwoScale}
+
+\reflectbox{Reflect}
+
+\resizebox{1cm}{1cm}{Resize}
+\resizebox{!}{1cm}{Resize}
+
+\rotatebox[origin=c]{90}{Rotate}       % must usepackage graphics if using graphics, also can be l,r,c,t,b,B
+\rotatebox[x=2mm, y=5mm, units=6.283185]{1.57}{Rotate}

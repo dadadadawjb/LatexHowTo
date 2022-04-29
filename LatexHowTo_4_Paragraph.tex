@@ -1,0 +1,91 @@
+\section{Paragraph}
+\subsection{Indent}
+{\noindent
+This is a paragraph with no indent. \par
+\indent
+This is a paragraph with indent.}
+
+{\setlength\parindent{4em}
+Here is a new paragraph. \par
+\addtolength\parindent{2em}
+Here is a new paragraph.}
+
+{\hangindent=5pc \hangafter=-2
+For the left of the paragraph, indent 5px applied in the first 2 lines of the paragraph, 
+which is called ``Hanging indentation''.}
+
+\subsection{Segment Spacing}
+{\setlength\parskip{3pt}    % between paragraphs
+\setlength\leftskip{4em} \setlength\rightskip{1em}
+A new paragraph.}
+
+\subsection{Alignment}
+{\raggedright
+Left alignment. \par
+\raggedleft
+Right alignment. \par
+\centering
+Center alignment.}
+
+\begin{flushleft}
+    Left alignment environment.
+\end{flushleft}
+
+\begin{flushright}
+    Right alignment environment.
+\end{flushright}
+
+\begin{center}
+    Center alignment environment.
+\end{center}
+
+\subsection{Hyphenation}
+man\-u\-script set the hyphen
+
+{\sloppy
+allow wider blank in paragraph so that forbid hyphenation. \par
+\fussy
+do not allow wide blank in paragraph so that recover default strict hyphenation.}
+
+\begin{sloppypar}
+    environment for allowing wider blank in paragraph so that forbid hyphenation.
+\end{sloppypar}
+
+\subsection{Ragged2e}   % must usepackage ragged2e
+{\RaggedRight
+Left alignment with ragged2e. \par
+\RaggedLeft
+Right alignment with ragged2e. \par
+\Centering
+Center alignment with ragged2e. \par
+\justifying
+Return back to uniform two-end alignment with ragged2e.}
+
+\begin{FlushLeft}
+    Left alignment environment with ragged2e.
+\end{FlushLeft}
+
+\begin{FlushRight}
+    Right alignment environment with ragged2e.
+\end{FlushRight}
+
+\begin{Center}
+    Center alignment environment with ragged2e.
+\end{Center}
+
+\begin{justify}
+    Uniform two-end alignment environment with ragged2e.
+\end{justify}
+
+\subsection{Lettrine}
+\lettrine{T}{he} lettrine can be used for first word sanking.
+
+\subsection{Shapepar}
+\heartpar{
+    绿草苍苍，白雾茫茫，有位佳人，在水一方。
+    绿草萋萋，白雾迷离，有位佳人，靠水而居。
+    我愿逆流而上，依偎在她身旁。无奈前有险滩，道路又远又长。
+    我愿顺流而下，找寻她的方向。却见依稀仿佛，她在水的中央。
+    我愿逆流而上，与她轻言细语。无奈前有险滩，道路曲折无已。
+    我愿顺流而下，找寻她的足迹。却见仿佛依稀，她在水中伫立。
+}

@@ -1,0 +1,117 @@
+\section{Fonts}
+\subsection{Special Characters}
+Accents (重音): 
+{\LARGE
+    \`o, \'o, \^o, \"o, \~o, \=o, \.o, \u{o}, \v{o}, \H{o}, \t{oo}, \r{o}, \c{o}, \d{o}, \b{o}
+}
+
+Variants: 
+{\LARGE
+    \AA, \aa, \AE, \ae, \OE, \oe, \SS, \ss, \IJ, \ij, \L, \l, \O, \o, \i, \j
+}
+
+Symbols: 
+{\LARGE
+    \S, \dag, \ddag, \P, \copyright, \pounds,                       % also can be used in math mode
+    % \yen, \checkmark, \circledR, \maltese,                          % error exists
+    \textregistered, \texttrademark, \textbullet
+}
+
+Ligature (连字): shelfful, shelf{}ful, shelf\/ful
+
+\subsection{Punctuation}
+\subsubsection{Quote}
+`hello' ``world'' ``dadadadawjb"
+
+It's wjb's howto.
+
+\subsubsection{Minus}
+Hyphen (连字符): X-ray
+
+Number ranges (en dash): 1--2. Also can use $\sim$.
+
+Punctuation dash (em dash) (破折号): I am dadadadawjb---a student.
+
+\subsubsection{Ellipsis}
+In the last\ldots.
+
+In the middle $\ldots$ middle.
+
+\subsubsection{Indirect Punctuations}
+\#, \$, \%, \&, \{, \}, \_, \textbackslash
+
+\subsection{Digits}
+Often used with symbol to use character code, such as
+\symbol{90},        % decimal
+\symbol{"5A},       % hexadecimal
+\symbol{'132},      % octal
+\symbol{`Z}         % character
+
+\subsection{Fonts Type}
+\subsubsection{Font Family}
+\textrm{Roman font family.} {\rmfamily Roman font family.}
+
+\textsf{Sans serif font family.} {\sffamily Sans serif font family.}
+
+\texttt{Typewriter font family.} {\ttfamily Typewriter font family.}
+
+{\CJKfamily{zhhei} 黑体} {\heiti 黑体}
+
+{\CJKfamily{zhsong} 宋体} {\songti 宋体}
+
+{\CJKfamily{zhfs} 仿宋} {\fangsong 仿宋}
+
+{\CJKfamily{zhkai} 楷书} {\kaishu 楷书}
+
+{\lucidasans Lucida Sans font family.}  % must defined by \newfontfamily
+
+{\CJKfamily{kai} 楷体}  % must defined by \setCJKfamilyfont
+
+\subsubsection{Font Shape}
+\textup{Upright font shape.} {\upshape Upright font shape.}
+
+\textit{Italic font shape.} {\itshape Italic font shape.}
+
+\textsl{Slanted font shape.} {\slshape Slanted font shape.}
+
+\textsc{Small capitals font shape.} {\scshape Small capitals font shape.}
+
+Italic correction: \par
+{\itshape M}M       % slanted overflow
+{\itshape M\/}M     % no slanted overflow
+\textit{M}M         % no slanted overflow
+\textit{M\nocorr}   % slanted overflow
+
+\subsubsection{Font Series}
+\textmd{Medium font series.} {\mdseries Medium font series.}
+
+\textbf{Bold extended font series.} {\bfseries Bold extended font series.}
+
+\subsubsection{Uniform Set The Three}
+\textnormal{Normal font type.} {\normalfont Normal font type.}
+
+\subsubsection{Emphasize}
+This is \emph{emphasized} text.
+
+This is {\em emphasized\/} text.
+
+This is \Emph{more emphasized} text.
+
+\underline{Underline emphasize} is not \underline{uniform} and cannot newline.
+
+\uline{Uline emphasize} is \uline{uniform} and can newline. % must usepackage ulem
+
+\uuline{double uline} \uwave{wave uline} \sout{cross line} \xout{wrong line} \dashuline{dash uline} \dotuline{dot uline}    % must usepackage ulem
+
+\CJKunderline{下划线} \CJKunderdblline{双下划线} \CJKunderwave{下波浪线} \CJKsout{删除线} \CJKxout{错误线} \CJKunderdot{下加点}     % must usepackage xeCJKfntef
+
+\subsubsection{Font Size}
+{\tiny tiny} {\scriptsize script size} {\footnotesize footnote size} {\small small} {\normalsize normal size}
+
+{\large large} {\Large larger} {\LARGE even larger} {\huge huge} {\Huge largest}
+
+{\zihao{0} 初号} {\zihao{-0} 小初号}
+
+{\zihao{1} 一号} {\zihao{-1} 小一号} {\zihao{2} 二号} {\zihao{-2} 小二号}
+
+{\zihao{3} 三号} {\zihao{-3} 小三号} {\zihao{4} 四号} {\zihao{-4} 小四号} {\zihao{5} 五号} {\zihao{-5} 小五号} {\zihao{6} 六号} {\zihao{-6} 小六号} {\zihao{7} 七号} {\zihao{8} 八号}

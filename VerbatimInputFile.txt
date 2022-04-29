@@ -1,0 +1,2 @@
+$name = wjb
+print("Hello, $name!\n")

@@ -1,0 +1,522 @@
+%%%%%%%%%%---------- Fonts ----------%%%%%%%%%%
+% \usepackage{amsthm}                     % for using some theorem environment, must before fontspec, incompatible with ntheorem
+
+% \frenchspacing                          % for forbidding extra blank after puctuations, only the same blank length between the normal words
+% \CJKsetecglue{}                         % for forbidding auto-blank between chinese and other contents completely
+% \renewcommand\nocorrlist{,.A}           % for not correcting the specific characters' slanted overflow
+
+\usepackage{fontspec}                   % for using xetex setting font family, if `no-math`, then no influencing the math font
+\setmainfont{Times New Roman}
+\setsansfont{Verdana}
+\setmonofont{Courier New}
+\newfontfamily\lucidasans{Lucida Sans}  % for define new font family, used by \lucidasans
+\setmathrm{Latin Modern Math}
+\setmathsf{Verdana}
+\setmathtt{Courier New}
+
+\newcommand\Emph{\textbf}               % for defining more emphasize, used by \Emph
+\usepackage[normalem]{ulem}             % for correct underline, if `normalem`, then no influencing the \emph, used by \uline
+\usepackage{xeCJKfntef}                 % for using underline chinese, if `normalem`, then no influencing the \emph
+
+\setCJKmainfont{SimSun}
+\setCJKsansfont{YouYuan}
+\setCJKmonofont{FangSong}
+\setCJKfamilyfont{kai}{KaiTi}           % for defining new chinese font family, used by \CJKfamily{kai}
+
+\linespread{1}                          % set line spacing
+\selectfont
+
+%%%%%%%%%%---------- Blank ----------%%%%%%%%%%
+\newlength\mylen                        % define own length variable
+\setlength\mylen{2em}
+
+%%%%%%%%%%---------- Box ----------%%%%%%%%%%
+\newsavebox\mybox                       % define own box variable, used by \mybox
+\sbox\mybox{My box contents}
+\savebox\mybox[5cm][s]{My box contents} % c for center, l for left, r for right, s for stretched
+% \usepackage{varwidth}
+% \usepackage{graphicx}
+
+%%%%%%%%%%---------- Paragraph ----------%%%%%%%%%%
+\usepackage{indentfirst}                % for setting paragraph indent
+\setlength{\parindent}{2em}
+
+\hyphenation{man-u-script com-pu-ter}   % manuscript set the hyphenation
+
+\usepackage{ragged2e}                   % for paragraph setting's supplement
+
+\usepackage{microtype}                  % for better english uneven short lines, just included, no need to use explicitly
+
+\usepackage{lettrine}                   % for first word sanking, used by \lettrine
+
+\usepackage{shapepar}                   % for editing the paragraph shape
+
+%%%%%%%%%%---------- Word Environment ----------%%%%%%%%%%
+\renewcommand\abstractname{Name for abstract}   % for renaming the title of abstract
+\ctexset{abstractname={Name for abstract}}      % for renaming the title of abstract in Chinese
+
+%%%%%%%%%%---------- List ----------%%%%%%%%%%
+\renewcommand\theenumii{\fnsymbol{enumii}}      % for changing the index of enumerate environment
+\renewcommand\labelenumii{(\theenumii)}         % for changing the tag of enumerate environment, similar for itemize environment
+
+\newenvironment{myitemize}{%
+    \begin{list}{\textbullet}{%
+        \setlength\topsep{0pt} \setlength\partopsep{0pt} \setlength\parsep{0pt} \setlength\itemsep{0pt}}}
+    {\end{list}}                                % general list difficult to use, often used for new own environment
+
+\usepackage{enumitem}                           % for editting easily enumerate environment
+\AddEnumerateCounter{\chinese}{\chinese}{}      % for processing no-standard counter
+
+%%%%%%%%%%---------- Counter ----------%%%%%%%%%%
+\newcounter{mycnt}[section]                     % for defining own counter variable, if added another counter, then that counter step will cause mycnt clear
+\setcounter{mycnt}{0}
+\renewcommand\themycnt{\thesection-\arabic{mycnt}}
+% used by \stepcounter{mycnt}\themycnt, \addtocounter{mycnt}{-1}\themycnt, often as part of own defined command
+
+\usepackage[centertags, sumlimits, nointlimits, namelimits]{amsmath}
+% centertags or tbtags, sumlimits or nosumlimits, intlimits or nointlimits, namelimits or nonamelimits
+\numberwithin{equation}{section}                % for making equation indexing along with section
+
+\usepackage{chngcntr}                           % similar to amsmath
+\counterwithin{figure}{section}                 % for making figure indexing along with section
+\counterwithout{figure}{section}                % for making figure indexing not along with section
+
+%%%%%%%%%%---------- Theorem ----------%%%%%%%%%%
+% \usepackage{theorem}                            % for changing the style of theorem environment, must above newtheorem
+\usepackage[thmmarks]{ntheorem}                 % better than theorem, added theoremstyle nonumberplain, nonumberbreak, empty, if `thmmarks`, then can use \theoremsymbol
+\theoremstyle{plain}                            % also plain, break, marginbreak, changebreak, change, margin
+\theoremheaderfont{\sffamily\bfseries}
+\theorembodyfont{\normalfont}
+\setlength\theorempreskipamount{5pt}
+\setlength\theorempostskipamount{5pt}
+\theoremsymbol{\ensuremath{\boxed{\phantom{n}}}}
+
+% \usepackage{amsthm}
+% \renewcommand\proofname{ProofTitle}             % used by \begin{proof}
+% \renewcommand\qedsymbol{\ensuremath{\boxed{\phantom{M}}}}
+
+\newtheorem{thm}{TheoremTitle}[section]         % for creating a new theorem environment, used by \begin{thm}, if added another counter, then that counter step will cause thm clear
+% if the counter is located in the middle, then the index is determined by the counter, often used for different theorem with same index
+
+%%%%%%%%%%---------- Verbatim ----------%%%%%%%%%%
+\newsavebox\verbbox                             % used for verbatim
+\begin{lrbox}\verbbox
+    \verb!#$%^&{}!
+\end{lrbox}
+
+\newsavebox\verbatimbox                         % used for verbatim multiple lines
+\begin{lrbox}\verbatimbox
+    \begin{minipage}{10em}
+        \begin{verbatim}
+            #$%^&{}
+            #$%^&{}
+            #$%^&{}
+        \end{verbatim}
+    \end{minipage}
+\end{lrbox}
+
+\usepackage{fancyvrb}                           % used for verbatim
+\SaveVerb{myverb}!#^&{}!                        % used by \UseVerb
+
+\usepackage{cprotect}                           % for protecting verbatim as other commands' parameter
+
+\usepackage{verbatim}                           % for verbatiming whole file
+
+\usepackage{shortvrb}                           % for short writing the verbatim
+% \MakeShortVerb!                                 % used by directly !something!, danger to some degree
+
+%%%%%%%%%%---------- Codes ----------%%%%%%%%%%
+\usepackage{listings}                           % for codes environment, used by \begin{lstlisting}
+\lstset{
+    basicstyle=\sffamily,
+    keywordstyle=\bfseries,
+    commentstyle=\rmfamily\itshape,
+    stringstyle=\ttfamily,
+    flexiblecolumns,                            % same as columns=flexible
+    numbers=left, numberstyle=\footnotesize,
+    escapechar=`,
+    language=C
+}
+
+%%%%%%%%%%---------- Tabular ----------%%%%%%%%%%
+\usepackage{dcolumn}                            % for using tabular aligned with math dot, will also usepackage array by default
+\newcolumntype{d}{D{.}{.}{2}}                   % for changing the use of math dot, input as ., output as ., allow 2 bits
+
+\setlength\tabcolsep{1em}                       % for changing the length between columns in tabular
+\setlength\arraycolsep{1em}                     % for changing the length between columns in array
+\renewcommand\arraystretch{2}                   % for changing the length between rows in tabular and array, by default 1
+
+% \usepackage{array}                              % already include by default with dcolumn
+
+\usepackage{multirow}                           % for using multirow tabular
+
+\usepackage{rotating, makecell}                 % for using tabular item cell
+
+\usepackage{diagbox}                            % for using diagnal tabular item
+
+\usepackage{tabularx}                           % for using fixed width tabular, used by \begin{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}    % for changing the style of tabularx
+
+\usepackage{longtable}                          % for using long tabular, used by \begin{longtable}
+
+\usepackage{ltxtable}                           % for using long tabular with tabularx, used by \LTXtable
+
+\usepackage[delarray]{tabu}                     % for using tabular more easily, must also together with longtable
+
+\usepackage{xtab}                               % for using long tabular also, used by \begin{xtabular} or \begin{xtabular*}
+
+\usepackage{booktabs}                           % for using different thickness tabular line, almost for three-line table
+\setlength\heavyrulewidth{0.08em}               % for changing the thickness of \toprule and \bottomrule
+\setlength\lightrulewidth{0.05em}               % for changing the thickness of \midrule
+\setlength\cmidrulewidth{0.03em}                % for changing the thickness of \cmidrule
+\setlength\aboverulesep{0.03em}                 % for changing the length above \bottomrule and \midrule and \cmidrule
+\setlength\belowrulesep{0.03em}                 % for changing the length below \toprule and \midrule and \cmidrule
+\setlength\abovetopsep{0em}                     % for changing the length above \toprule
+\setlength\belowbottomsep{0em}                  % for changing the length below \bottomrule
+
+\setlength\arrayrulewidth{1pt}                  % for changing the whole lines thichness in tabular
+
+\newcolumntype{v}{!{\vrule width 2pt}}          % for using different thickness vertical lines in tabular
+
+\setlength\doublerulesep{1pt}                   % for changing the length between double lines in tabular
+
+\usepackage{hhline}                             % for using correct double lines in tabular
+
+% \usepackage{arydshln}                           % for using dash line in tabular, conflict with hhline and makecell
+% \newcolumntype{|}{!{\vline}}                    % for solving the conflict between arydshln and hhline, makecell, bug exists
+
+% \setlength\dashlinedash{4pt}                    % for changing the length of dash in dash line in tabular
+% \setlength\dashlinegap{4pt}                     % for changing the length of gap in dash line in tabular
+
+\usepackage{rotfloat}                           % for using rotated table and figure, used by \begin{sidewaystable} and \begin{sidewaysfigure}
+
+\usepackage{caption, subcaption}                % for changing the style of the caption of float
+\captionsetup[table]{format=hang, labelformat=brace, labelsep=endash, justification=centering, singlelinecheck=false, 
+                    font={small,sf}, labelfont=sc, textfont=bf, width=20em, skip=10pt, name=TableName}
+\usepackage{bicaption}                          % for using bilingual caption
+\DeclareCaptionOption{english}[]{%
+    \renewcommand\figurename{FigureName}
+    \renewcommand\tablename{TableName}}
+\DeclareCaptionOption{chinese}[]{%
+    \renewcommand\figurename{图名}
+    \renewcommand\tablename{表名}}
+\captionsetup[bi-first]{english}
+\captionsetup[bi-second]{chinese}
+\captionsetup[sub]{font={small, it}}                            % set for all subcaptions
+\captionsetup[subtable]{labelformat=simple, labelsep=colon}     % set for subtables
+
+\usepackage{picinpar}                           % for using table and figure arounded by words, used by \begin{tabwindow} and \begin{figwindow}
+\usepackage{wrapfig}                            % for using table and figure arounded by words, used by \begin{wraptable} and \begin{wrapfigure}
+
+% \usepackage{colortbl}                           % for using color in table, must after xcolor
+
+%%%%%%%%%%---------- Notes ----------%%%%%%%%%%
+\renewcommand\thefootnote{\fnsymbol{footnote}}                      % for changing the form of the index of footnote
+\renewcommand\thempfootnote{\textcircled{\arabic{mpfootnote}}}      % for changing the form of the index of minipage footnote
+
+\usepackage{pifont}                                                 % for easier using circled index
+\renewcommand\thempfootnote{\ding{\numexpr171+\value{mpfootnote}}}  % for changing the form of the index of minipage footnote into circled number
+
+\setlength\footnotesep{6.65pt}                  % for editting the length between footnotes
+\renewcommand\footnoterule{                     % for editting the format of the footnote line
+    \vspace*{0.3cm}
+    \hrule width 2.5cm
+    \vspace*{0.3cm}
+}
+
+\usepackage[perpage]{footmisc}                  % for footnote indexing every page, while every chapter by default
+
+\setlength\marginparwidth{6em}                  % for changing the width of marginnote
+\setlength\marginparsep{1em}                    % for changing the length between marginnote and article
+\setlength\marginparpush{1em}                   % for changing the length between marginnotes
+
+\setlength\smallskipamount{3pt plus 1pt minus 1pt}  % for changing the length of \smallskip
+\setlength\medskipamount{2\smallskipamount}         % for changing the length of \medskip
+\setlength\bigskipamount{4\smallskipamount}         % for changing the length of \bigskip
+
+\raggedbottom                                   % for setting newpage no need for alignment
+\flushbottom                                    % for setting newpage should alignment
+
+\usepackage{varwidth}                           % for using natrual minipage, used by \begin{varwidth}
+
+%%%%%%%%%%---------- LaTeX Logos ----------%%%%%%%%%%
+\usepackage{mflogo}                             % for using logos, \MF and \MP
+\usepackage{metalogo}                           % for using logos, \XeTeX and \XeLaTeX
+% \usepackage{doc}                                % for using logos, \BibTeX, bug exists
+
+%%%%%%%%%%---------- Structure Demostration ----------%%%%%%%%%%
+\ctexset{today=old}                             % for changing the format of \today, can be small, big, old, by default small
+
+\usepackage{authoraftertitle}                   % for using title, author, date in document, used by \MyTitle, \MyAuthor, \MyDate
+
+\setcounter{secnumdepth}{3}                     % for changing the structure levels that can be indexed, by default 3
+\setcounter{tocdepth}{3}                        % for changing the structure levels that can be included into table of contents, by default 3
+
+% \usepackage{syntonly}                           % for only doing syntax check
+% \syntaxonly
+
+\usepackage[sf, bf, it, raggedright]{titlesec}                          % for changing the format of title
+% \titlelabel{\S~\thetitle\quad}                                          % for changing the format of label of title
+\titleformat*{\section}{\large\sffamily\bfseries\itshape\centering}     % for changing the format of specific title
+
+% for changing the format of title in Chinese
+\ctexset{section = 
+            {name={Sec\quad, .}, number={\arabic{section}}, format={\centering\bfseries\Large}, 
+            numberformat+={\rmfamily}, titleformat+={\rmfamily}, nameformat+={\rmfamily}, 
+            aftername={\hspace{1ex}---\hspace{1ex}}, beforeskip={2em}, afterskip={2em}}}
+\ctexset{subsection = 
+            {name={\fnsymbol{subsection}, :}, format={\raggedright\bfseries\large}, 
+            numberformat+={\sffamily}, titleformat+={\sffamily}, nameformat+={\sffamily}, 
+            aftername={\hspace{2ex}}, beforeskip={1em}, afterskip={1em}}}
+\ctexset{subsubsection = 
+            {numberformat+={\ttfamily}, titleformat+={\ttfamily}, nameformat+={\ttfamily}, 
+            aftername={\hspace{1ex}}, beforeskip={}, afterskip={}}}
+
+\usepackage{geometry}                           % for changing the size of page
+\geometry{a4paper, left=3cm, right=3cm}
+
+\pagenumbering{arabic}                          % for changing the style of page number
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}                               % for changing the style of page heading, including empty, plain, headings, myheadings, fancy while fancy need usepackage fancyhdr
+\fancyhf{}                                      % clear all page headings and footings
+\fancyhead[L]{\slshape \MyTitle}
+\fancyhead[R]{\slshape \MyDate}
+\fancyhead[C]{\slshape \bfseries\leftmark}
+\fancyfoot[C]{page \arabic{page} of \pageref{LastPage}}
+\fancyfoot[LR]{$\heartsuit$}
+% also can use \lhead, \chead, \rhead, \lfoot, \cfoot, \rfoot
+\renewcommand\headrulewidth{0.4pt}              % for changing the fancy heading horizontal line
+\renewcommand\footrulewidth{0pt}                % for changing the fancy footing horizontal line
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \cfoot{---\textit{\thepage}---}
+    \renewcommand\headrulewidth{0pt}
+    \renewcommand\footrulewidth{0pt}
+}
+
+\setlength\headheight{13pt}                     % for fixing fancyhdr's warning
+
+\setlength\columnsep{3em}                       % for changing the length between two columns
+\setlength\columnseprule{0.4pt}                 % for changing the width of column vertical line, by default 0pt
+
+% \usepackage{balance}                            % for changing the mode of non-balance two columns mode
+% \balance                                        % otherwise use \nobalance to return non-balance two columns mode
+
+\usepackage{multicol}                           % for using more powerful columns mode, conflicting with floating and marginpar, used by \begin{multicols}
+
+\usepackage{pdflscape}                          % for using rotated page, used by \begin{landscape}
+
+%%%%%%%%%%---------- Macros ----------%%%%%%%%%%
+\newcommand\wjb{\emph{Wang Junbo}}
+\newcommand\loves[2]{#1 loves #2.}
+\newcommand\vloves[3][loves]{#2 #1 #3.}
+
+\renewcommand\wjb{\emph{Junbo Wang}}
+
+\newenvironment{myquotation}[1]{%
+    \newcommand\quotesource{#1}
+    \begin{quotation}
+}{%
+    \par\hfill ------ 《\textit{\quotesource}》
+    \end{quotation}
+}
+
+%%%%%%%%%%---------- Table Of Contents ----------%%%%%%%%%%
+% \usepackage{tocbibind}                          % for adding more to table of contents, then can not include \addcontentsline
+
+\usepackage{tocloft}                            % for changing the style of table of contents
+\tocloftpagestyle{fancy}                        % for changing the style of the page of table of contents, by default plain
+
+\renewcommand\contentsname{Title of Table of Contents}      % for changing the format of the title of table of contents
+\setlength\cftbeforetoctitleskip{2ex}
+\setlength\cftaftertoctitleskip{2ex}
+\renewcommand\cfttoctitlefont{\hfill\Large\sffamily\bfseries}
+\renewcommand\cftaftertoctitle{\hfill}
+
+\renewcommand\cftdot{$\ast $}                   % for changing the format of the items of table of contents, leaving several options not listed
+\renewcommand\cftdotsep{1}
+
+%%%%%%%%%%---------- Cross Reference ----------%%%%%%%%%%
+\usepackage{hyperref}
+\hypersetup{%
+    colorlinks=true,
+    bookmarks=true,
+    bookmarksopen=true,
+    bookmarksnumbered=true,
+    pdfborder={0 0 1},
+    pdfpagemode=FullScreen,
+    pdfstartview=Fit,
+    pdftitle={Latex How To},
+    pdfauthor={Junbo Wang},
+    pdfsubject={How to write Latex},
+    pdfkeywords={HowTo, Latex}
+}
+
+\usepackage{nameref}                            % for using reference name, used by \nameref
+
+\usepackage{lastpage}                           % for using the total number of pages, used by \pageref{LastPage}
+
+\usepackage{xr}                                 % for using cross reference from external .aux file
+\externaldocument[ex:]{ExternalCrossReference}  % if option, then add this as the prefix when reference
+
+%%%%%%%%%%---------- Literature Reference ----------%%%%%%%%%%
+% \bibliographystyle{alpha}                       % for changing the style of literature reference, also can use plain, unsrt, alpha, abbrv
+
+\usepackage[numbers, square, sort&compress]{natbib}             % for using more bib styles
+\bibliographystyle{plainnat}                    % for changing the style of literature reference, also can use plainnat, unsrtnat, abbrvnat
+\setcitestyle{numbers, square, comma, aysep={;}, yysep={,}, notesep={,}}    % for changing the style of citing
+\ctexset{bibname={Title of Literature References}}              % for changing the title of literature references list, by default References
+% \renewcommand\bibname{Title of Literature References}           % the same as \ctexset{bibname={Title of Literature References}}
+\renewcommand\bibsection{\section*{\refname}}                   % for changing the way to typeset the literature references list, by default the same
+\renewcommand\bibpreamble{Literatures referenced as follows.}   % for adding some additional description, by default none
+\renewcommand\bibfont{\small}                                   % for changing the font of the literature references list, by default none
+\renewcommand\citenumfont{\itshape}                             % for changing the font of the citing numbers, by default none
+\renewcommand\bibnumfmt[1]{[\textbf{#1.}]}                      % for changing the style of the index of the literature references list, by default [#1]
+\setlength\bibhang{2em}                                         % for changing the hang indent of the literature references list
+\setlength\bibsep{0.5em}                                        % for changing the length between items of the literature references list
+
+%%%%%%%%%%---------- Index ----------%%%%%%%%%%
+% \usepackage{makeidx}                          % for using index list
+\usepackage{imakeidx}                           % for using more powerful index list, used by \index
+% \usepackage{idxlayout}                        % for changing the style of index list, must after imakeidx, here we do not use
+\makeindex[%
+    name=index1,                                % by default \jobname
+    title={Title of Index List 1},              % by default \indexname
+    intoc=true,                                 % by default false
+    columns=1,                                  % by default 1
+    program=makeindex,                          % can be also makeindex, xindy, texindy
+    options={-s mkind.ist},                     % by default none
+    noautomatic=false                           % by default false
+]
+% more than 1 index lists must usepackage imakeidx
+\makeindex[%
+    name=index2,
+    title={Title of Index List 2},
+    intoc=true,
+    columns=2,
+    columnsep=35pt,                             % by default 35pt
+    columnseprule=true,                         % by default false
+    program=makeindex,
+    options={-s mkind.ist},
+    noautomatic=false
+]
+\indexsetup{%
+    level=\section*,                                    % by default \chapter*
+    toclevel=section,                                   % by default chapter
+    firstpagestyle=plain,                               % by default plain
+    headers={Index List odd}{Index List even},          % odd and even page heading
+    othercode={ \renewcommand\indexspace{\smallskip} }  % the code excuted before index item
+}
+
+\renewcommand\seename{see}                      % for changing the |see output, by default the same
+\renewcommand\alsoname{see also}                % for changing the |seealso output, by default the same
+
+\newcommand*\mysee[2]{#2 (\emph{see} #1)}       % for defining a new see, used by |mysee{other_index}
+
+% \usepackage{glossaries}                         % for using glossaries functions, used by \newglossaryentry
+% \makeglossaries                                 % similar to \makeindex
+
+%%%%%%%%%%---------- Math ----------%%%%%%%%%%
+% \usepackage{amsmath}                            % already usepackage above
+\usepackage{mathtools}                          % for using other math tools
+\usepackage{tensor}                             % for using special superscript and subscript, used by \indices and \tensor
+\usepackage[version=4]{mhchem}                  % for using chemistry formula, used by \ce
+\usepackage{xfrac}                              % for using small inline fraction, used by \sfrac
+
+\newcommand\stiring[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}       % for defining general fraction
+\newcommand\dstiring[2]{\genfrac{[}{]}{0pt}{0}{#1}{#2}}     % here for stiring number
+\newcommand\tstiring[2]{\genfrac{[}{]}{0pt}{1}{#1}{#2}}     % must usepackage amsmath
+
+\setcounter{MaxMatrixCols}{15}                  % for changing the max columns in matrix, by default 10
+
+\usepackage{delarray}                           % for using delimit directly in matrix
+
+\usepackage{blkarray}                           % for using matrix more easily
+\makeatletter
+\newbox\BA@first@box
+\makeatother                                    % for dealing with the conflict with amsmath
+
+\usepackage{amssymb}                            % for using more math fonts
+
+\newcommand\mi{\mathrm{i}}                      % for imaginary unit `i` in math mode
+\newcommand\me{\mathrm{e}}                      % for math constant `e` in math mode
+\newcommand\diff{\,\mathrm{d}}                  % for differential operator `d` in math mode
+
+\usepackage{upgreek}                            % for using upright greek letters
+
+\usepackage{amsxtra}                            % for using command \sp
+
+\usepackage{yhmath}                             % for using more math accents
+
+\usepackage{accents}                            % for using more general math accents, used by \accentset and \underaccent
+
+\usepackage{bm}                                 % for using bold math, used by \bm and \hm
+
+\DeclareMathOperator{\card}{card}               % for customizing math operators, must usepackage amsmath, if `*` then with limit
+\DeclareMathOperator{\dif}{d\!}                 % for better differential operator `d` in math mode
+
+\newcommand\defeq{\stackrel{\text{d}}{=}}       % for using stack relation
+
+\usepackage{extarrows}                          % for using stackable arrows
+
+\usepackage{mathdots}                           % for using math dots
+
+\setlength\multlinegap{3em}                     % for changing the length between the first line of multiline math environment with the edge
+\setlength\multlinetaggap{3em}                  % for changing the length between the last line of multiline math environment with the edge
+
+% \usepackage[mathstyleoff]{breqn}                % for using automatic math line break, bug exists
+
+\usepackage{cases}                              % for using numcases, used by \begin{numcases}
+
+\newtagform{bracket}[\textit]{[}{]}             % for changing the style of the index of math equation
+\usetagform{bracket}                            % must usepackage mathtools
+
+\renewcommand\theequation{\thesection.\arabic{equation}}    % for changing the style of the counter of math equation
+
+\renewcommand\*{\discretionary{\,\mbox{$\cdot$}}{}{}}       % for changing thestyle of the math hyphenation \*
+
+\allowdisplaybreaks[1]                          % for setting whether allow multiple line math formula to page break
+
+% \setlength\mathindent{1pt}                      % for changing the indent before math formula when choose fleqn
+\setlength\abovedisplayskip{12pt plus 3pt minus 9pt}
+\setlength\abovedisplayshortskip{0pt plus 3pt}              % for changing the length between math formula and above text
+\setlength\belowdisplayskip{12pt plus 3pt minus 9pt}
+\setlength\belowdisplayshortskip{7pt plus 3pt minus 4pt}    % for changing the length between math formula and below text
+\setlength\jot{3pt}                             % for changing the length between multiple lines math formula
+% \setlength\thinmuskip{3mu}                      % for changing the thin math skip, bug exists
+% \setlength\medmuskip{4mu plus 2mu minus 4mu}    % for changing the medium math skip, bug exists
+% \setlength\thickmuskip{5mu plus 5mu}            % for changing the thick math skip, bug exists
+\setlength\mathsurround{0pt}                    % for changing the length between inline math formula and surrounded text
+
+%%%%%%%%%%---------- Figure ----------%%%%%%%%%%
+\usepackage{graphicx}
+\graphicspath{{Figures/pdf}{Figures/png}{Figures/jpg}}      % set the path where the figures to be searched
+
+\newfloat{myfloat}{htbp}{lomyfloat}[section]        % create a new float named myfloat, with aux file *.lomy, counter with section, used by \begin{myfloat}
+\floatname{myfloat}{Float Title}                    % set the title for myfloat
+\floatstyle{ruled}                                  % for changing the style of created float, can be `plain`, `plaintop`, `boxed`, `ruled`
+\restylefloat{myfloat}                              % floatstyle only makes sense to the floats defined after it, use restylefloat to set pre-defined float
+\floatplacement{myfloat}{H}                         % for resetting default placement
+
+\usepackage{newfloat}                               % for using more advanced float environment
+\DeclareFloatingEnvironment[name=mynewfloat, listname=List of mynewfloat, fileext=lomynewfloat, placement=H, within=section]{mynewfloat}    % create a new float named mynewfloat, used by \begin{mynewfloat}
+
+\usepackage[section]{placeins}                      % for setting float barrier, used by \FloatBarrier, `section` for automatically add barrier before each section
+
+\usepackage{afterpage}                              % for setting contents exactly at the top of next page
+
+% \usepackage{endfloat}                               % for making all floats appearing in the end
+
+% \usepackage[table]{xcolor}                          % for using colors, `table` for colortbl, bug exists
+\usepackage{xcolor}
+\colorlet{darkred}{red!50!black}                    % for defining color
+
+% \usepackage{colortbl}                               % for using color in table, must after xcolor
+
+\usepackage[all, pdf]{xy}                           % for using xy-pic
+
+\usepackage{pstricks}                               % for using pstricks
+\usepackage{pstricks-add}
+
+\usepackage{tikz}                                   % for using tikz

@@ -1,0 +1,28 @@
+\section{Notes\protect\footnote{This is the footnote in the title.}}
+% footnote cannot be used in part title, figure and tabular title and etc.
+\subsection{Footnotes}
+Footnote\footnote{This is the first footnote.}. Footnote\footnote{This is the second footnote.}. Footnote\footnote[4]{This is the third footnote.}.
+
+\begin{minipage}{20em}
+    Minipage footnote\footnote{This is the minipage footnote.}.     % footnote can be used in minipage
+\end{minipage}
+
+\begin{tabular}{r|r}
+    Hello & World\footnotemark \\ \hline                            % footnote cannot be used in tabular and box and etc
+    $x$ & $y$
+\end{tabular}
+\footnotetext{This is the footnote in the tabular.}
+
+The counter is \thefootnote\ and \thempfootnote.
+
+The forms can be \fnsymbol{footnote}, \textcircled{\arabic{footnote}}.
+
+\subsection{Marginnotes}
+\marginpar{Marginnote}
+
+\marginpar[Left marginnote]{Right marginnote}
+
+{\reversemarginpar
+\marginpar{Reversed marginnote}
+\normalmarginpar
+\marginpar{Normal marginnote}}

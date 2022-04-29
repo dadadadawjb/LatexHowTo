@@ -1,0 +1,54 @@
+\section{List}
+\subsection{Ordered List}
+\begin{enumerate}
+    \item The first item.
+    \item The second item.
+    \item The third item, its index is \theenumi, its value is \arabic{enumi} by default; its tag is \labelenumi, its value is \theenumi. by default.
+    \item[5.] The fourth item,  commands are \theenumi, \theenumii, \theenumiii, \theenumiv; \labelenumi, \labelenumii, \labelenumiii, \labelenumiv.
+    \item The fifth item, forms are \arabic{enumi}, \alph{enumi}, \roman{enumi}, \Alph{enumi}, \Roman{enumi}, \alph{enumi}, \fnsymbol{enumi}, \chinese{enumi}.
+\end{enumerate}
+
+\subsection{Unordered List}
+\begin{itemize}
+    \item The first item.
+    \item The second item.
+    \item[\dag] The third item, tags are \labelitemi, \labelitemii, \labelitemiii, \labelitemiv, values are \textbullet, {\normalfont\bfseries \textendash}, \textasteriskcentered, \textperiodcentered\ by default.
+\end{itemize}
+
+\subsection{Tag List}
+\begin{description}
+    \item[First] The first item.
+    \item[Second] The second item.
+    \item[Third] The third item. 
+\end{description}
+
+{\renewcommand\descriptionlabel[1]{\normalfont\Large\itshape \textbullet\ #1}
+\begin{description}
+    \item[Hello] WJB.
+    \item[World] wjb.
+\end{description}
+}
+
+\subsection{General List}
+\begin{list}{\#\themycnt}{\usecounter{mycnt}}
+    \item Hello.
+    \item World.
+\end{list}
+
+\begin{myitemize}
+    \item Hello.
+    \item World.
+\end{myitemize}
+
+\subsection{Trivial List}
+\begin{trivlist}
+    \centering
+    \item[] It is the same as center environment.
+\end{trivlist}
+
+\subsection{Enumitem}
+% must usepackage enumitem
+\begin{enumerate}[itemsep=0pt, parsep=0pt, label=(\arabic*)]
+    \item Hello.
+    \item World.
+\end{enumerate}

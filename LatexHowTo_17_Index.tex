@@ -1,0 +1,41 @@
+\section{Index}
+\subsection{Vanilla Index}
+Here comes one key word. \index[index1]{Hello}
+
+Here comes another key word. \index[index1]{World}
+
+Here comes duplicated key word. \index[index1]{Hello}
+
+Here comes leveled 1 key word. \index[index1]{Level1}
+
+Here comes leveled 2 key word. \index[index1]{Level1!Level2}
+
+Here comes leveled 3 key word. \index[index1]{Level1!Level2!Level3}
+
+The before interval index. \index[index2]{alpha|(}
+
+The after interval index. \index[index2]{alpha|)}
+
+The reference index. \index[index2]{beta|see{World}}
+
+The reference index. \index[index2]{gamma|seealso{World}}
+
+Here comes math key word. \index[index2]{n@$n$}
+
+Here comes command key word. \index[index2]{Hi@\textbf{Hi}}
+
+Here comes reserved key words. \index[index2]{Hey"!} \index[index2]{sjtuwjb3589635689"@sjtu.edu.cn} \index[index2]{"|x"|} \index[index2]{""Quote""}
+
+Here comes newcommand key word. \index[index2]{New|textit}
+
+Here comes newcommand key word. \index[index2]{New-another|mysee{New}}
+
+\subsection{Glossary}
+% must usepackage glossaries, bug exists
+% \newglossaryentry{gloss}{%
+%     name={glossary},
+%     description={A vocabulary with annotations for a particular subject},
+%     plural=glossaries
+% }
+
+% Here I will reference the gloss, 1 for \gls{gloss}, 2 for \Gls{gloss}, 3 for \glspl{gloss}, 4 for \Glspl{gloss}.

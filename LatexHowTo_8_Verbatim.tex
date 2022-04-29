@@ -1,0 +1,19 @@
+\section{Verbatim}
+\verb*!\LaTeX \& \TeX!          % * for blank
+
+\begin{verbatim*}
+$name = wjb
+print("Hello, $name!\n")
+\end{verbatim*}
+
+\fbox{\usebox\verbbox}          % verbatim used in lrbox as the parameter of other commands
+
+\fbox{\UseVerb{myverb}}         % also for as parameter of other commands, must usepackage fancyvrb
+
+\cprotect\fbox{\verb!#$%^&{}!}  % also for as parameter of other commands, must usepackage cprotect
+
+\fbox{\usebox\verbatimbox}      % for multiple lines
+
+\verbatiminput{VerbatimInputFile.txt}   % must usepackage verbatim
+
+% !\LaTeX!                        % short write verbatim, must usepackage shortvrb

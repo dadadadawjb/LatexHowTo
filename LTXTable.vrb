@@ -1,0 +1,44 @@
+    \begin{longtable}{|X|X|}
+        \caption{The Example Of LTXTable With Fancyvrb} \\
+        \hline
+        \endfirsthead
+
+        \multicolumn{2}{l}{ (Continued) } \\
+        \hline
+        \endhead
+
+        \multicolumn{2}{c}{Continuing next page\ldots} \\[2ex]
+        \endfoot
+
+        \hline
+        \multicolumn{2}{r}{End Of Table} \\
+        \endlastfoot
+
+        Name & Description \\ \hline
+        A & The 1st character in alphabet \\
+        B & The 2nd character in alphabet \\
+        C & The 3rd character in alphabet \\
+        D & The 4th character in alphabet \\
+        E & The 5th character in alphabet \\
+        F & The 6th character in alphabet \\
+        G & The 7th character in alphabet \\
+        H & The 8th character in alphabet \\
+        I & The 9th character in alphabet \\
+        J & The 10th character in alphabet \\
+        K & The 11th character in alphabet \\
+        L & The 12th character in alphabet \\
+        M & The 13th character in alphabet \\
+        N & The 14th character in alphabet \\
+        O & The 15th character in alphabet \\
+        P & The 16th character in alphabet \\
+        Q & The 17th character in alphabet \\
+        R & The 18th character in alphabet \\
+        S & The 19th character in alphabet \\
+        T & The 20th character in alphabet \\
+        U & The 21st character in alphabet \\
+        V & The 22nd character in alphabet \\
+        W & The 23rd character in alphabet \\
+        X & The 24th character in alphabet \\
+        Y & The 25th character in alphabet \\
+        Z & The 26th character in alphabet \\
+    \end{longtable}
