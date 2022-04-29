@@ -12,4 +12,4 @@ A systematic guidance and reference to LaTeX with clean and well-annotated modul
 ## Note
 Due to so many dependencies included, some features will come into conflict, so the corresponding codes are annotated with `bug exists` annotation.
 
-Most of the features are introduced in [An introduction to LaTeX](https://book.douban.com/subject/24703731/) by [Haiyang Liu](leoliu.pku@gmail.com), which is also the main reference I refer to.
+Most of the features are introduced in [An introduction to LaTeX](https://book.douban.com/subject/24703731/) by [Haiyang Liu](mailto:leoliu.pku@gmail.com), which is also the main reference I refer to.

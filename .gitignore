@@ -16,6 +16,7 @@
 *.out
 *.thm
 *.toc
+*.vrb
 # self-defined generated auxiliary files
-# *.lomyfloat
-# *.lomynewfloat
+*.lomyfloat
+*.lomynewfloat
